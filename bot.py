@@ -52,7 +52,7 @@ async def on_message(ctx, sigle, session, annee):
     try:
         success = cours.fetch_horaire(index_session, annee)
     except Exception as e:
-        await ctx.send(f'Bon t\'as cassé le bot, voici le message d\'erreur `{str(e)}`')
+        await ctx.send(f':skull: Bon t\'as cassé le bot, voici le message d\'erreur `{str(e)}`')
         
     if not success:
         print(cours.url)
