@@ -1,0 +1,131 @@
+#!/usr/bin/env python3
+
+import re
+import sys
+import argparse
+import urllib.request
+import requests
+from bs4 import BeautifulSoup
+
+
+class color:
+    PURPLE = '\033[95m'
+    CYAN = '\033[96m'
+    DARKCYAN = '\033[36m'
+    BLUE = '\033[94m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    END = '\033[0m'
+
+sessions = {'hiv': 1, 'ete': 2, 'aut': 3} 
+sessions_str = ['hiver', 'été', 'automne']
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    'sigle', metavar='sigle',
+    type=str,
+    help='Sigle du cours'
+)
+parser.add_argument(
+    '-s', '--session', 
+    metavar='ses', 
+    type=str,
+    choices=sessions,
+    help=('Affiche la disponibilité du cours ' 
+          'pour la session d\'hiver, d\'été ou d\'automne. '
+          '(hiv, ete, aut) au lieu de la description')
+)
+parser.add_argument(
+    '-a', metavar='annee',
+    type=int,
+    required='--session' in sys.argv,
+    help=('Pour spécifier l\'année à laquelle'
+          'on veut connaître la disponibilité du cours.')
+)
+args = parser.parse_args()
+
+sigle = args.sigle
+url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/couw001?owa_type=P&owa_sigle={sigle}'
+
+res = requests.get(url)
+soup = BeautifulSoup(res.text, "html.parser")
+
+if soup.find('center'):
+    print('Sigle absent de la banque de cours', file=sys.stderr)
+    sys.exit()
+
+sigle_titre = soup.find('h1', {'class': 'titrepagecours'}).contents[0]
+# Removing a weird character (\xa0)
+sigle_titre = sigle_titre[:-1] 
+
+description = soup.find('div', {'class': 'textedescription'}).contents[1].text
+description = re.sub('\\r ', '\\n', description)
+
+m = re.search('Préalable', description)
+if m:
+    description = description[:m.start()]
+
+    desc = soup.find('div', {'class': 'textedescription'})
+    all_prea = desc.find_all('strong')
+    prealables = [[] for _ in all_prea]
+    for i, prea in enumerate(all_prea):
+        for sigl in prea.find_next().find_all('a'):
+            prealables[i].append(sigl.text)
+
+niveau = soup.find_all('table')[1].find_all('td')[1].text
+departement = soup.find_all('table')[1].find_all('td')[3].text
+
+print(f'\n{color.GREEN}{color.BOLD}{sigle_titre}{color.END}\n')
+print(f'\t{color.YELLOW}Niveau        {niveau}')
+print(f'\tDépartement   {departement}{color.END}')
+if m:
+    for i, prea in enumerate(prealables):
+        print(f'\t{color.YELLOW}Préalable {i+1}   {color.END}', end='')
+        print(color.RED, end='')
+        print(*prea, sep=' ou ', end='\n')
+        print(color.END, end='')
+    print()
+else:
+    print()
+
+if not args.session:
+    print(f'{color.UNDERLINE}Description{color.END}')
+    print(description)
+else:
+    # TODO put it in a function for multiple group (ex.: ADM1016 hiv 2020)
+    session_num = sessions[args.session]
+    sess_str = sessions_str[session_num-1]
+    year = args.a
+    url_horaire = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f?owa_sigle={sigle}&owa_anses={year}{session_num}&owa_apercu=N'
+    res = requests.get(url_horaire)
+    soup = BeautifulSoup(res.text, "html.parser")
+
+    soup_info = soup.find('td', {'class': 'horaireinfo'})
+    soup_horaire = soup.find('td', {'class': 'horairedates'})
+
+    if not soup_info:
+        print(f'L\'horaire de la session {sess_str} {year} n\'est pas encore publié.', file=sys.stderr)
+        sys.exit()
+
+    groupe = soup.find('span', {'class': 'groupe'}).contents[1]
+
+    professor = soup_info.find('div', {'class': 'enseignants'})
+    professor = re.sub('\xa0', '', professor.text)
+    professor = re.sub('\\n', '', professor)
+    professor = re.sub(':', '', professor)
+
+    jour = soup_horaire.find('strong').text
+
+    heure = soup_horaire.find('td', {'class': 'heure'})
+    heure = re.sub('\xa0', '', heure.text)
+    heure = re.sub('\\n', '', heure)
+
+    lieu = soup_horaire.find('td', {'class': 'heure'}).find_next().text
+
+    print(f'{color.BOLD}Horaire | {sess_str} {year}{color.END}\n')
+    print(f'\t{color.YELLOW}Groupe         {groupe}')
+    print(f'\t{color.YELLOW}Horaire        {jour} de {heure} au {lieu}')
+    print(f'\t{color.YELLOW}{professor}{color.END}')
