@@ -1,19 +1,18 @@
 import os
-
-import discord
 from dotenv import load_dotenv
+from discord.ext import commands
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
 
-client = discord.Client()
+bot = commands.Bot(command_prefix='?')
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'{client.user} has connected to Discord!')
+    print(f'{bot.user} has connected to Discord!')
 
-#@client.event
-#async def on_message(message):
-#    if 
+@bot.command(name='sigle')
+async def on_message(ctx, sigle):
+    await ctx.send('yes')
 
-client.run(token)
+bot.run(token)
