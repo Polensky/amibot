@@ -2,16 +2,19 @@ import re
 import sys
 import urllib.request
 import requests
+import texttable as tt
 from bs4 import BeautifulSoup
 
+#TODO eviter que sa casse pour des cours comme SIF1040
+#TODO gerer les cours avec plusieurs groupes (ex.: ADM1016 hiv 2020)
 
 class Cours:
 
     def __init__(self, sigle):
         self.sigle = sigle
-        self.url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/couw001?owa_type=P&owa_sigle={sigle}'
 
-    def fetch_data(self):
+    def fetch_description(self):
+        self.url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/couw001?owa_type=P&owa_sigle={self.sigle}'
         res = requests.get(self.url)
         soup = BeautifulSoup(res.text, "html.parser")
 
@@ -40,3 +43,69 @@ class Cours:
         self.niveau = soup.find_all('table')[1].find_all('td')[1].text
         self.departement = soup.find_all('table')[1].find_all('td')[3].text
         return True
+
+
+    def fetch_horaire(self, session_index, annee):
+        self.url= f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f?owa_sigle={self.sigle}&owa_anses={annee}{session_index}&owa_apercu=N'
+        res = requests.get(self.url)
+        soup = BeautifulSoup(res.text, "html.parser")
+
+        soup_info = soup.find('td', {'class': 'horaireinfo'})
+        soup_horaire = soup.find('td', {'class': 'horairedates'})
+        if not soup_info:
+            return False
+
+        self.titre = soup.find('h1', {'class': 'titrepagehorairecours'})
+        self.titre = re.sub('\\n', '', self.titre.text)
+        self.titre = self.titre.strip()
+
+        professor = soup_info.find('div', {'class': 'enseignants'})
+        professor = re.sub('\xa0', '', professor.text)
+        self.professor = re.sub('\\n', '', professor).strip()
+
+        self.jour = soup_horaire.find('strong').text
+
+        heure = soup_horaire.find('td', {'class': 'heure'})
+        heure = re.sub('\xa0', '', heure.text)
+        self.heure = re.sub('\\n', '', heure)
+
+        self.lieu = soup_horaire.find('td', {'class': 'heure'}).find_next().text
+        self.lieu = self.lieu.strip() 
+        return True
+
+    def horaire(self):
+        return Cours._horaire_text_table(self.jour, self.heure, self.lieu)
+
+    @staticmethod
+    def _horaire_text_table(jour, heure, lieu):
+        if heure[:2] == '08':
+            periode = 1
+        elif heure[:2] == '12':
+            periode = 2
+        elif heure[:2] == '15':
+            periode = 3
+        elif heure[:2] == '19':
+            periode = 4
+
+        if jour == 'lundi':
+            le_jour = 1
+        elif jour == 'mardi':
+            le_jour = 2
+        elif jour == 'mercredi':
+            le_jour = 3
+        elif jour == 'jeudi':
+            le_jour = 4
+        elif jour == 'vendredi':
+            le_jour = 5
+
+        horaire_template = [['           ','Lundi','Mardi','Mercredi', 'Jeudi', 'Vendredi'],
+                            ['08h30-11h30','     ','     ','        ', '     ', '        '],
+                            ['12h00-15h00','     ','     ','        ', '     ', '        '],
+                            ['15h30-18h30','     ','     ','        ', '     ', '        '],
+                            ['19h00-22h00','     ','     ','        ', '     ', '        '],]
+
+        horaire_template[periode][le_jour] = lieu
+        table = tt.Texttable()
+        table.set_chars(['⋯','|','⊕','⋯'])
+        table.add_rows(horaire_template)
+        return table.draw()

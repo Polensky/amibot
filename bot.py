@@ -1,4 +1,5 @@
 import os
+import re
 from dotenv import load_dotenv
 from discord.ext import commands
 from siglfinder import Cours
@@ -7,6 +8,7 @@ import discord
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
 nothing_found_msg = 'Sigle absent de la banque de cours'
+sessions = ['hiver', 'été', 'automne']
 
 bot = commands.Bot(command_prefix='?')
 
@@ -17,7 +19,7 @@ async def on_ready():
 @bot.command(name='sigle')
 async def on_message(ctx, sigle):
     cours = Cours(sigle)
-    success = cours.fetch_data()
+    success = cours.fetch_description()
     if not success:
         await ctx.send(nothing_found_msg)
     else:
@@ -37,6 +39,31 @@ async def on_message(ctx, sigle):
                     inline=False
                 )
         await ctx.send(embed=embed)
+
+@bot.command(name='horaire')
+async def on_message(ctx, sigle, session, annee):
+    try:
+        index_session = sessions.index(session)
+        index_session += 1
+    except ValueError as e:
+        await ctx.send(f'`{session}` n\'est pas une session valide.\n Éseiller plutôt `hiver`, `ete` ou `automne`.')
+
+    cours = Cours(sigle)
+    try:
+        success = cours.fetch_horaire(index_session, annee)
+    except Exception as e:
+        await ctx.send(f'Bon t\'as cassé le bot, voici le message d\'erreur `{str(e)}`')
+        
+    if not success:
+        print(cours.url)
+        await ctx.send(f'L\'horaire de la session {session} {annee} pour le cours {sigle} n\'est pas encore publié.')
+    else:
+        message = '> ' + cours.titre+ '\n'
+        message += '> *' + re.sub(' ', '*', cours.professor) + '*\n' 
+        message += '```\n' + cours.horaire() + '\n```\n'
+        print(message)
+        await ctx.send(message)
+
 
 @bot.command(name='mourad')
 async def on_message(ctx):
