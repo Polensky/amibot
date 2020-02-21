@@ -24,11 +24,12 @@ async def on_message(ctx, sigle):
         embed=discord.Embed(
             title=cours.titre, 
             description=cours.description, 
+            url=cours.url,
             color=0x006534
         )
         embed.add_field(name="Niveau", value=cours.niveau, inline=True)
         embed.add_field(name="Département", value=cours.departement, inline=True)
-        if cours.prealables:
+        if hasattr(cours, "prealables"):
             for i, prealable in enumerate(cours.prealables):
                 embed.add_field(
                     name=f'Préalable {i+1}', 
