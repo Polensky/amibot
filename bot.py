@@ -58,11 +58,16 @@ async def on_message(ctx, sigle, session, annee):
         print(cours.url)
         await ctx.send(f'L\'horaire de la session {session} {annee} pour le cours {sigle} n\'est pas encore publié.')
     else:
-        message = '> ' + cours.titre+ '\n'
-        message += '> *' + re.sub(' ', '*', cours.professor) + '*\n' 
-        message += '```\n' + cours.horaire() + '\n```\n'
-        print(message)
-        await ctx.send(message)
+        embed=discord.Embed(
+            title=cours.titre, 
+            description=cours.professor, 
+            url=cours.url,
+            color=0x006534
+        )
+        horaire_str = cours.jour + ' de ' + cours.heure
+        embed.add_field(name="Horaire", value=horaire_str, inline=True)
+        embed.add_field(name="Lieu", value=cours.lieu, inline=True)
+        await ctx.send(embed=embed)
 
 
 @bot.command(name='mourad')
