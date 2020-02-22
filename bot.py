@@ -70,13 +70,6 @@ async def on_message(ctx, sigle, session, annee):
         await ctx.send(embed=embed)
 
 
-@bot.command(name='mourad')
-async def on_message(ctx):
-    embed=discord.Embed(
-        color=0x006534
-    )
-    embed.set_image(url="https://i.imgur.com/J9vfhEh.png")
-    await ctx.send(embed=embed)
 
 
 bot.run(token)
