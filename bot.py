@@ -10,7 +10,7 @@ token = os.getenv('DISCORD_TOKEN')
 nothing_found_msg = 'Sigle absent de la banque de cours'
 sessions = ['hiver', 'été', 'automne']
 
-bot = commands.Bot(command_prefix='?')
+bot = commands.Bot(command_prefix=':')
 
 @bot.event
 async def on_ready():
