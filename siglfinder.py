@@ -5,7 +5,7 @@ import requests
 import texttable as tt
 from bs4 import BeautifulSoup
 
-#TODO eviter que sa casse pour des cours comme SIF1040
+#TODO eviter que sa casse pour des cours comme SIF1040, PIF1005
 #TODO gerer les cours avec plusieurs groupes (ex.: ADM1016 hiv 2020)
 
 class Cours:
@@ -63,14 +63,20 @@ class Cours:
         professor = re.sub('\xa0', '', professor.text)
         self.professor = re.sub('\\n', '', professor).strip()
 
-        self.jour = soup_horaire.find('strong').text
+        horaires = soup_horaire.find_all('tr')
+        if len(horaires) > 2:
+            pass # treat all row
+        else:
+            jour = soup_horaire.find('strong').text
 
-        heure = soup_horaire.find('td', {'class': 'heure'})
-        heure = re.sub('\xa0', '', heure.text)
-        self.heure = re.sub('\\n', '', heure)
+            heure = soup_horaire.find('td', {'class': 'heure'})
+            heure = re.sub('\xa0', '', heure.text)
+            heure = re.sub('\\n', '', heure)
 
-        self.lieu = soup_horaire.find('td', {'class': 'heure'}).find_next().text
-        self.lieu = self.lieu.strip() 
+            lieu = soup_horaire.find('td', {'class': 'heure'}).find_next().text
+            lieu = self.lieu.strip() 
+
+            self.horaires = [(jours, heure, lieu)]
         return True
 
     def horaire(self):

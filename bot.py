@@ -1,9 +1,11 @@
 import os
 import re
+import datetime
 from dotenv import load_dotenv
 from discord.ext import commands
 from siglfinder import Cours
 import discord
+import traceback
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
@@ -16,7 +18,7 @@ bot = commands.Bot(command_prefix=';')
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
 
-@bot.command(name='sigle')
+@bot.command(name='sigle', help='[sigle] | Donne la description du cours.')
 async def on_message(ctx, sigle):
     cours = Cours(sigle)
     success = cours.fetch_description()
@@ -40,19 +42,23 @@ async def on_message(ctx, sigle):
                 )
         await ctx.send(embed=embed)
 
-@bot.command(name='horaire')
-async def on_message(ctx, sigle, session, annee):
+@bot.command(name='horaire', help='[session] [année]')
+async def on_message(ctx, sigle, session, annee=None):
+    if not annee:
+        annee = datetime.datetime.now().year
+        annee = str(annee)
     try:
         index_session = sessions.index(session)
         index_session += 1
     except ValueError as e:
-        await ctx.send(f'`{session}` n\'est pas une session valide.\n Éseiller plutôt `hiver`, `ete` ou `automne`.')
+        await ctx.send(f'`{session}` n\'est pas une session valide.\n Éseiller plutôt `hiver`, `été` ou `automne`.')
 
     cours = Cours(sigle)
     try:
         success = cours.fetch_horaire(index_session, annee)
     except Exception as e:
-        await ctx.send(f':skull: Bon t\'as cassé le bot, voici le message d\'erreur `{str(e)}`')
+        err_tace = traceback.format_exc()
+        await ctx.send(f':skull: Bon t\'as cassé le bot, voici le message d\'erreur ```{err_tace}```')
         
     if not success:
         print(cours.url)
@@ -64,9 +70,14 @@ async def on_message(ctx, sigle, session, annee):
             url=cours.url,
             color=0x006534
         )
-        horaire_str = cours.jour + ' de ' + cours.heure
-        embed.add_field(name="Horaire", value=horaire_str, inline=True)
-        embed.add_field(name="Lieu", value=cours.lieu, inline=True)
+        if len(cours.horaires) > 1:
+            pass
+        else:
+            jour, heure, lieu = cours.horaires[0]
+            horaire_str = jour + ' de ' + heure
+            embed.add_field(name="Horaire", value=horaire_str, inline=True)
+            embed.add_field(name="Lieu", value=lieu, inline=True)
+
         await ctx.send(embed=embed)
 
 
