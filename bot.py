@@ -118,4 +118,5 @@ async def get_img_horaire(ctx, session: str, *sigles: str):
 
 bot.run(token)
 
+# TODO make this line work with keyboardinterrupt. Catching seems to cause bot problems.
 logger.info('Bot shut down')
