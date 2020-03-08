@@ -6,6 +6,7 @@ env/
 ### PROJECT SETTINGS ###
 .venv
 .vscode
+*.log
 
 ### Python ###
 # Byte-compiled / optimized / DLL files

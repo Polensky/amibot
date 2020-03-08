@@ -1,11 +1,15 @@
 import re
 import requests
+import logging
 import pandas as pd
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 
 #TODO eviter que sa casse pour des cours comme SIF1040, PIF1005
 #TODO gerer les cours avec plusieurs groupes (ex.: ADM1016 hiv 2020)
+
+logger = logging.getLogger('sigle_logger')
+logger.error('hi')
 
 class Cours:
 
