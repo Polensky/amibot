@@ -1,11 +1,15 @@
 import re
 import requests
+import logging
 import pandas as pd
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 
 #TODO eviter que sa casse pour des cours comme SIF1040, PIF1005
 #TODO gerer les cours avec plusieurs groupes (ex.: ADM1016 hiv 2020)
+
+logger = logging.getLogger('sigle_logger')
+logger.error('hi')
 
 class Cours:
 
@@ -84,27 +88,18 @@ class Cours:
             self.horaires = [(jour, heure, lieu)]
         return True
 
-    def horaire(self):
+    def horaire_cours(self) -> bool:
         """
         Returns the schedule for the current Cours instance.
         """
-        jour, heure, lieu = self.horaires[0]
-        return Cours._horaire_text_table(jour, heure, lieu)
+        return Cours._horaire_text_table([self])
 
     @staticmethod
-    def _horaire_text_table(jour, heure, lieu) -> bool:
+    def _horaire_text_table(cours) -> bool:
         """
         Gets the schedule as a table.
         """
         # TODO enlever la partie transparente de l'image
-        if heure[:2] == '08':
-            periode = 0
-        elif heure[:2] == '12':
-            periode = 1
-        elif heure[:2] == '15':
-            periode = 2
-        elif heure[:2] == '19':
-            periode = 3
 
         fig = plt.figure(dpi=250)
         ax = fig.add_subplot(1,1,1)
@@ -117,7 +112,21 @@ class Cours:
             'jeudi': ['','','', ''],
             'vendredi': ['','','', ''],
         }
-        semaine[jour][periode] = lieu
+
+        for c in cours:
+            for h in c.horaires:
+                jour, heure, lieu = h
+
+                if heure[:2] == '08':
+                    periode = 0
+                elif heure[:2] == '12':
+                    periode = 1
+                elif heure[:2] == '15':
+                    periode = 2
+                elif heure[:2] == '19':
+                    periode = 3
+
+                semaine[jour][periode] += f'{c.sigle}: {lieu}\n'
 
         dc = pd.DataFrame(semaine)
 
@@ -131,7 +140,7 @@ class Cours:
             cellLoc='center'
         )
         table.set_fontsize(14)
-        table.scale(2,1)
+        table.scale(2,2)
         ax.axis('off')
 
         ax.patch.set_visible(False)
