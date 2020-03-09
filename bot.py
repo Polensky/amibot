@@ -3,7 +3,7 @@ import sigle_logger
 import datetime
 from dotenv import load_dotenv
 from discord.ext import commands
-from siglfinder import Cours
+from siglfinder import Cours, Requester
 import discord
 import traceback
 import logging
@@ -115,6 +115,52 @@ async def get_img_horaire(ctx, session: str, *sigles: str):
     else:
         logger.error('Image generation failed.')
         await ctx.send(f'Il y a eu un problème dans la génération d\'image')
+
+@bot.command(name='zen', help='Zen')
+async def zen(ctx, color='006534'):
+    if len(color) == 6:
+        color = f'0x{color}'
+        try:
+            color = int(color, 16)
+        except ValueError:
+            await ctx.send('Use valid hex strings you animal!')
+            color = 0x006534
+    else:
+        await ctx.send('Use valid hex strings you animal!')
+        color = 0x006534
+
+    embed=discord.Embed(
+            title='Zen of Python',
+            description=Requester.zen(),
+            url='https://www.python.org/dev/peps/pep-0020/',
+            color=color
+        )
+    await ctx.send(embed=embed)
+
+@bot.command(name='pep8', help='pep8')
+async def pep8(ctx, color='006534'):
+    if len(color) == 6:
+        color = f'0x{color}'
+        try:
+            color = int(color, 16)
+        except ValueError:
+            await ctx.send('Use valid hex strings you animal!')
+            color = 0x006534
+    else:
+        await ctx.send('Use valid hex strings you animal!')
+        color = 0x006534
+
+    pep = Requester.pep8()
+
+    embed=discord.Embed(
+        title=pep.pep,
+        desctiption=pep.desc,
+        url=pep.URL,
+        color=color
+        )
+    embed.set_author(name=pep.author)
+    embed._fields = pep.fields
+    await ctx.send(embed=embed)
 
 bot.run(token)
 
