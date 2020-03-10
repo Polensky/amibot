@@ -173,11 +173,20 @@ class Requester:
         return zen
 
     @staticmethod
-    def pep8() -> (str, list):
+    def anypep(num: int) -> Pep:
         """
-        Returns the pep8 description
+        Returns any pep desired
         """
-        res = requests.get('https://www.python.org/dev/peps/pep-0008/')
+        num = str(num)
+        while len(num) < 4:
+            num = '0' + num
+
+        pep_url = f'https://www.python.org/dev/peps/pep-{num}/'
+
+        res = requests.get(pep_url)
+
+        if res.status_code == 404:
+            return None
 
         soup = BeautifulSoup(res.text, 'html.parser')
         pep_table = soup.find('tbody')
@@ -186,7 +195,7 @@ class Requester:
 
         table_dict = dict(zip(field_names, field_bodies))
 
-        pep = Pep(f'Pep{table_dict.pop("PEP:")}', table_dict.pop('Title:'), table_dict.pop('Author:'), 'https://www.python.org/dev/peps/pep-0008/')
+        pep = Pep(f'Pep{table_dict.pop("PEP:")}', table_dict.pop('Title:'), table_dict.pop('Author:'), pep_url)
 
         pep.fields = [{'inline': False, 'name': name, 'value': body} for name, body in table_dict.items()]
 

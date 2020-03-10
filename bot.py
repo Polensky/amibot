@@ -1,7 +1,9 @@
 import os
 import sigle_logger
 import datetime
+import re
 from dotenv import load_dotenv
+from os import listdir
 from discord.ext import commands
 from siglfinder import Cours, Requester
 import discord
@@ -27,26 +29,27 @@ async def get_sigle(ctx, sigle: str):
     success = cours.fetch_description()
     if not success:
         await ctx.send(nothing_found_msg)
-    else:
-        embed=discord.Embed(
-            title=cours.titre,
-            description=cours.description,
-            url=cours.url,
-            color=0x006534
-        )
-        embed.add_field(name="Niveau", value=cours.niveau, inline=True)
-        embed.add_field(name="Département", value=cours.departement, inline=True)
+        return
 
-        if hasattr(cours, "prealables"):
-            for i, prealable in enumerate(cours.prealables):
-                embed.add_field(
-                    name=f'Préalable {i+1}',
-                    value=' ou '.join(prealable),
-                    inline=False
-                )
-        await ctx.send(embed=embed)
+    embed=discord.Embed(
+        title=cours.titre,
+        description=cours.description,
+        url=cours.url,
+        color=0x006534
+    )
+    embed.add_field(name="Niveau", value=cours.niveau, inline=True)
+    embed.add_field(name="Département", value=cours.departement, inline=True)
 
-@bot.command(name='horaire', help='[session] [année]')
+    if hasattr(cours, "prealables"):
+        for i, prealable in enumerate(cours.prealables):
+            embed.add_field(
+                name=f'Préalable {i+1}',
+                value=' ou '.join(prealable),
+                inline=False
+            )
+    await ctx.send(embed=embed)
+
+@bot.command(name='horaire', help='[sigle] [session] [année (optionel)]')
 async def get_horaire(ctx, sigle: str, session: str, annee=None):
     if not annee:
         annee = str(datetime.datetime.now().year)
@@ -66,22 +69,23 @@ async def get_horaire(ctx, sigle: str, session: str, annee=None):
     if not success:
         logger.warning(f'Bad URL for {session} {annee} for course {sigle} at\n{cours.url}')
         await ctx.send(f'L\'horaire de la session {session} {annee} pour le cours {sigle} n\'est pas encore publié.')
-    else:
-        embed=discord.Embed(
-            title=cours.titre,
-            description=cours.professor,
-            url=cours.url,
-            color=0x006534
-        )
-        if len(cours.horaires) > 1:
-            pass
-        else:
-            jour, heure, lieu = cours.horaires[0]
-            horaire_str = jour + ' de ' + heure
-            embed.add_field(name="Horaire", value=horaire_str, inline=True)
-            embed.add_field(name="Lieu", value=lieu, inline=True)
+        return
 
-        await ctx.send(embed=embed)
+    embed=discord.Embed(
+        title=cours.titre,
+        description=cours.professor,
+        url=cours.url,
+        color=0x006534
+    )
+    if len(cours.horaires) > 1:
+        pass
+    else:
+        jour, heure, lieu = cours.horaires[0]
+        horaire_str = jour + ' de ' + heure
+        embed.add_field(name="Horaire", value=horaire_str, inline=True)
+        embed.add_field(name="Lieu", value=lieu, inline=True)
+
+    await ctx.send(embed=embed)
 
 @bot.command(name='img_horaire', help='[session] [sigles séparés par des espaces]')
 async def get_img_horaire(ctx, session: str, *sigles: str):
@@ -137,8 +141,12 @@ async def zen(ctx, color='006534'):
         )
     await ctx.send(embed=embed)
 
-@bot.command(name='pep8', help='pep8')
-async def pep8(ctx, color='006534'):
+@bot.command(name='pep', help='[pep number]')
+async def pep(ctx, num: int, color='006534'):
+    if num > 9999:
+        await ctx.send('There aren\'t that many peps!')
+        return
+
     if len(color) == 6:
         color = f'0x{color}'
         try:
@@ -150,17 +158,35 @@ async def pep8(ctx, color='006534'):
         await ctx.send('Use valid hex strings you animal!')
         color = 0x006534
 
-    pep = Requester.pep8()
+    if pep := Requester.anypep(num):
+        embed=discord.Embed(
+            title=pep.pep,
+            description=pep.desc,
+            url=pep.URL,
+            color=color
+            )
+        embed.set_author(name=pep.author)
+        embed._fields = pep.fields
+        await ctx.send(embed=embed)
+    else:
+        await ctx.send(f'Pep{num} does not exist!')
 
-    embed=discord.Embed(
-        title=pep.pep,
-        desctiption=pep.desc,
-        url=pep.URL,
-        color=color
-        )
-    embed.set_author(name=pep.author)
-    embed._fields = pep.fields
-    await ctx.send(embed=embed)
+@bot.command(name='todo', help='Lists bot TODOs')
+async def todo(ctx):
+    py_files = [f for f in listdir('./') if '.py' in f]
+
+    for py in py_files:
+        with open(py, 'r') as f:
+            todos = [f'line {i}: {t[0]}' for i, line in enumerate(f.readlines()) if (t := re.findall(r'^(?:\s+)?#(?:\s+)?TODO\s+(.*)$', line))]
+
+            if todos:
+                embed=discord.Embed(
+                    title=f'{py}',
+                    description='DO:\n\n' + '\n\n'.join(todos),
+                    url=f'https://dmigit.uqtr.ca/siroisc/sigle_finder/blob/master/{py}',
+                    color=0x006534
+                    )
+                await ctx.send(embed=embed)
 
 bot.run(token)
 
