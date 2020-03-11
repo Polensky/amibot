@@ -197,6 +197,6 @@ class Requester:
 
         pep = Pep(f'Pep{table_dict.pop("PEP:")}', table_dict.pop('Title:'), table_dict.pop('Author:'), pep_url)
 
-        pep.fields = [{'inline': False, 'name': name, 'value': body} for name, body in table_dict.items()]
+        pep.fields = [{'inline': False, 'name': name, 'value': body} for name, body in table_dict.items() if body]
 
         return pep

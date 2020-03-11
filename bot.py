@@ -5,6 +5,8 @@ import os
 import json
 import datetime
 import re
+from random import randint
+from dotenv import load_dotenv
 from os import listdir
 import traceback
 import logging
@@ -178,8 +180,7 @@ async def pep(ctx, num: int, color='006534'):
         await ctx.send('There aren\'t that many peps!')
         return
 
-    if len(color) == 6:
-        color = f'0x{color}'
+    if len(color) <= 6:
         try:
             color = int(color, 16)
         except ValueError:
@@ -218,7 +219,7 @@ async def todo(ctx):
                     title=f'{py}',
                     description='DO:\n\n' + '\n\n'.join(todos),
                     url=f'https://dmigit.uqtr.ca/siroisc/sigle_finder/blob/master/{py}',
-                    color=0x006534
+                    color=randint(0, 16777216)
                 )
                 await ctx.send(embed=embed)
 
