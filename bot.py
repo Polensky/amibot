@@ -219,7 +219,7 @@ async def todo(ctx):
                     description='DO:\n\n' + '\n\n'.join(todos),
                     url=f'https://dmigit.uqtr.ca/siroisc/sigle_finder/blob/master/{py}',
                     color=randint(0, 16777216)
-                    )
+                )
                 await ctx.send(embed=embed)
 
 @bot.command(name='corona', help='COVID-19')
