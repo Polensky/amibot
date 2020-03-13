@@ -15,7 +15,7 @@ from discord.ext import commands
 import discord
 import setproctitle
 from sigle_logger import start_logger
-from uqtr import Cours
+from uqtr import Cours, Session
 from pep import Requester
 
 
@@ -26,7 +26,6 @@ LOGGER = logging.getLogger('sigle_LOGGER')
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 NOTHING_FOUND_MSG = 'Sigle absent de la banque de cours'
-SESSIONS = ['hiver', 'été', 'automne']
 
 bot = commands.Bot(command_prefix=';')
 
@@ -57,7 +56,7 @@ async def get_sigle(ctx, sigle: str):
     embed.add_field(name="Niveau", value=cours.niveau, inline=True)
     embed.add_field(name="Département", value=cours.departement, inline=True)
 
-    if hasattr(cours, "prealables"):
+    if cours.prealables:
         for i, prealable in enumerate(cours.prealables):
             embed.add_field(
                 name=f'Préalable {i+1}',
@@ -71,17 +70,18 @@ async def get_horaire(ctx, sigle: str, session: str, annee=None):
     """
     Obtenir l'horaire d'un cours pour une session et une annee donnee.
     """
+    sess_enum = Session.from_session_string(session)
     if not annee:
         annee = str(datetime.datetime.now().year)
-    try:
-        index_session = SESSIONS.index(session) + 1
-    except ValueError:
-        await ctx.send(f'`{session}` n\'est pas une session valide.\n' \
+
+    if not sess_enum:
+        await ctx.send(f'`{session}` n\'est pas une session valide.' \
                 ' Essayez plutôt `hiver`, `été`, ou `automne`.')
+        return
 
     cours = Cours(sigle)
     try:
-        success = cours.fetch_horaire(index_session, annee)
+        success = cours.fetch_horaire(sess_enum, annee)
     except Exception:
         err_tace = traceback.format_exc()
         LOGGER.exception(f'Bot broke:')
@@ -116,9 +116,8 @@ async def get_img_horaire(ctx, session: str, *sigles: str):
     Commande pour obtenir une image de l'horaire de plusieurs cours.
     """
     annee = str(datetime.datetime.now().year)
-    try:
-        index_session = SESSIONS.index(session) + 1
-    except ValueError:
+    sess_enum = Session.from_session_string(session)
+    if not sess_enum:
         await ctx.send(f'`{session}` n\'est pas une session valide.\n' \
                 ' Essayez plutôt `hiver`, `été`, ou `automne`.')
 
@@ -127,7 +126,7 @@ async def get_img_horaire(ctx, session: str, *sigles: str):
     for sigle in sigles:
         cours = Cours(sigle)
         try:
-            if cours.fetch_horaire(index_session, annee):
+            if cours.fetch_horaire(sess_enum, annee):
                 cours_lst.append(cours)
             else:
                 fail_lst.append(cours)

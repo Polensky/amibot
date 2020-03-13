@@ -2,22 +2,63 @@
 Module containing functions that fetch data related to UQTR
 """
 import re
-import requests
+from enum import Enum
 import logging
-import pandas as pd
+from typing import List
+import requests
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
-from typing import List
+import pandas as pd
 
 #TODO eviter que sa casse pour des cours comme SIF1040, PIF1005
 #TODO gerer les cours avec plusieurs groupes (ex.: ADM1016 hiv 2020)
 
-logger = logging.getLogger('sigle_logger')
+LOGGER = logging.getLogger('sigle_logger')
+
+class Session(Enum):
+    """
+    Enumaration pour les sessions
+    """
+    HIVER = 1
+    ETE = 2
+    AUTOMNE = 3
+
+    @classmethod
+    def from_session_string(cls, session: str):
+        """
+        Convert string into session enum equivalent
+        """
+        ses_enum = None
+        if session == 'hiver':
+            ses_enum = cls.HIVER
+        elif session == 'été':
+            ses_enum = cls.ETE
+        elif session == 'auomne':
+            ses_enum = cls.AUTOMNE
+        return ses_enum
+
+    def __str__(self):
+        if self == Session.ETE:
+            return "été"
+
+        return self.name.lower()
+
 
 class Cours:
-
-    def __init__(self, sigle):
+    """
+    Objet representant un cours de l'UQTR
+    """
+    def __init__(self, sigle: str):
         self.sigle = sigle
+        self.url = None
+        self.titre = None
+        self.description = None
+        self.departement = None
+        self.niveau = None
+        self.prealables = []
+        self.session = None
+        self.annee = None
+        self.professor = None
 
     def fetch_description(self) -> bool:
         """
@@ -54,11 +95,11 @@ class Cours:
         return True
 
 
-    def fetch_horaire(self, session_index, annee) -> bool:
+    def fetch_horaire(self, session: Session, annee: str) -> bool:
         """
         Fetches the course schedule.
         """
-        self.url= f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f?owa_sigle={self.sigle}&owa_anses={annee}{session_index}&owa_apercu=N'
+        self.url= f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f?owa_sigle={self.sigle}&owa_anses={annee}{session.value}&owa_apercu=N'
         res = requests.get(self.url)
         soup = BeautifulSoup(res.text, "html.parser")
 
@@ -152,4 +193,3 @@ class Cours:
         plt.savefig('horaire_img.png', bbox_inches='tight', pad_inches=0)
 
         return True
-
