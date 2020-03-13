@@ -6,18 +6,20 @@ import json
 import datetime
 import re
 from random import randint
-from dotenv import load_dotenv
+import logging
 from os import listdir
 import traceback
-import logging
 import requests
 from dotenv import load_dotenv
 from discord.ext import commands
 import discord
+import setproctitle
 from sigle_logger import start_logger
-from siglfinder import Cours, Requester
+from uqtr import Cours
+from pep import Requester
 
 
+setproctitle.setproctitle('amibot')
 start_logger()
 LOGGER = logging.getLogger('sigle_LOGGER')
 

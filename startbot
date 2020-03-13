@@ -1,0 +1,4 @@
+#!/bin/sh
+
+./env/bin/python bot.py &
+disown %1
