@@ -1,27 +1,71 @@
+"""
+Module containing functions that fetch data related to UQTR
+"""
 import re
-import requests
+from enum import Enum
 import logging
-import pandas as pd
+from typing import List
+import requests
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
-from typing import List
+import pandas as pd
 
 #TODO eviter que sa casse pour des cours comme SIF1040, PIF1005
 #TODO gerer les cours avec plusieurs groupes (ex.: ADM1016 hiv 2020)
 
-logger = logging.getLogger('sigle_logger')
+LOGGER = logging.getLogger('sigle_logger')
+
+class Session(Enum):
+    """
+    Enumaration pour les sessions
+    """
+    HIVER = 1
+    ETE = 2
+    AUTOMNE = 3
+
+    @classmethod
+    def from_session_string(cls, session: str):
+        """
+        Convert string into session enum equivalent
+        """
+        ses_enum = None
+        if session == 'hiver':
+            ses_enum = cls.HIVER
+        elif session == 'été':
+            ses_enum = cls.ETE
+        elif session == 'auomne':
+            ses_enum = cls.AUTOMNE
+        return ses_enum
+
+    def __str__(self):
+        if self == Session.ETE:
+            return "été"
+        return self.name.lower()
+
 
 class Cours:
-
-    def __init__(self, sigle):
+    """
+    Objet representant un cours de l'UQTR
+    """
+    def __init__(self, sigle: str):
         self.sigle = sigle
+        self.url = None
+        self.titre = None
+        self.description = None
+        self.departement = None
+        self.niveau = None
+        self.prealables = []
+        self.session = None
+        self.annee = None
+        self.professor = None
 
     def fetch_description(self) -> bool:
+        """Fetches the course description and sets appropriate attributes.
+        return false if it fails
         """
-        Fetches the course description and sets appropriate attributes.
-        """
-        self.url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/couw001?owa_type=P&owa_sigle={self.sigle}'
-        res = requests.get(self.url)
+        payload = {'owa_sigle': self.sigle}
+        self.url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/couw001'
+        res = requests.get(self.url, params=payload)
         soup = BeautifulSoup(res.text, "html.parser")
 
         if soup.find('center'):
@@ -51,12 +95,14 @@ class Cours:
         return True
 
 
-    def fetch_horaire(self, session_index, annee) -> bool:
+    def fetch_horaire(self, session: Session, annee: str) -> bool:
+        """Fetches the course schedule.
+        session -- a Session enum
+        annee   -- which year to fetch the schedule
         """
-        Fetches the course schedule.
-        """
-        self.url= f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f?owa_sigle={self.sigle}&owa_anses={annee}{session_index}&owa_apercu=N'
-        res = requests.get(self.url)
+        payload = {'owa_sigle': self.sigle, 'owa_anses': f'{annee}{session.value}'}
+        self.url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f'
+        res = requests.get(self.url, params=payload)
         soup = BeautifulSoup(res.text, "html.parser")
 
         soup_info = soup.find('td', {'class': 'horaireinfo'})
@@ -89,16 +135,12 @@ class Cours:
         return True
 
     def horaire_cours(self) -> bool:
-        """
-        Returns the schedule for the current Cours instance.
-        """
+        """Returns the schedule for the current Cours instance."""
         return Cours._horaire_text_table([self])
 
     @staticmethod
     def _horaire_text_table(cours) -> bool:
-        """
-        Gets the schedule as a table.
-        """
+        """Gets the schedule as a table."""
         # TODO enlever la partie transparente de l'image
 
         fig = plt.figure(dpi=250)
@@ -149,54 +191,3 @@ class Cours:
         plt.savefig('horaire_img.png', bbox_inches='tight', pad_inches=0)
 
         return True
-
-class Pep:
-    def __init__(self, pep: str, desc: str, author: str, URL: str, fields=[]):
-        self.pep = pep
-        self.desc = desc
-        self.author = author
-        self.URL = URL
-        self.fields = fields
-
-class Requester:
-    @staticmethod
-    def zen() -> str:
-        """
-        Gets the Zen of Python
-        """
-        res = requests.get('https://www.python.org/dev/peps/pep-0020/')
-
-        soup = BeautifulSoup(res.text, 'html.parser')
-        zen = soup.find('pre', {'class': 'literal-block'})
-        zen = zen.text.strip('\n')
-
-        return zen
-
-    @staticmethod
-    def anypep(num: int) -> Pep:
-        """
-        Returns any pep desired
-        """
-        num = str(num)
-        while len(num) < 4:
-            num = '0' + num
-
-        pep_url = f'https://www.python.org/dev/peps/pep-{num}/'
-
-        res = requests.get(pep_url)
-
-        if res.status_code == 404:
-            return None
-
-        soup = BeautifulSoup(res.text, 'html.parser')
-        pep_table = soup.find('tbody')
-        field_names = [name.text for name in pep_table.findChildren('th', {'class': 'field-name'})]
-        field_bodies = [body.text for body in pep_table.findChildren('td', {'class': 'field-body'})]
-
-        table_dict = dict(zip(field_names, field_bodies))
-
-        pep = Pep(f'Pep{table_dict.pop("PEP:")}', table_dict.pop('Title:'), table_dict.pop('Author:'), pep_url)
-
-        pep.fields = [{'inline': False, 'name': name, 'value': body} for name, body in table_dict.items() if body]
-
-        return pep
