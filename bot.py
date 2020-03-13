@@ -15,8 +15,8 @@ from discord.ext import commands
 import discord
 import setproctitle
 from sigle_logger import start_logger
-from uqtr import Cours, Session
-from pep import Requester
+from models.uqtr import Cours, Session
+from models.pep import Requester
 
 
 setproctitle.setproctitle('amibot')
@@ -143,7 +143,7 @@ async def get_img_horaire(ctx, session: str, *sigles: str):
                     f'pour le cours {fail.sigle} n\'est pas encore publié.')
 
     if Cours._horaire_text_table(cours_lst):
-        await ctx.send(file=discord.File('horaire_img.png'))
+        await ctx.send(file=discord.File('images\\horaire_img.png'))
     else:
         LOGGER.error('Image generation failed.')
         await ctx.send(f'Il y a eu un problème dans la génération d\'image')
@@ -209,7 +209,10 @@ async def todo(ctx):
     """
     Affiche tous les TODO dans le code.
     """
-    py_files = [f for f in listdir('./') if '.py' in f]
+    dirs = ['./', './models/']
+    py_files = []
+    for d in dirs:
+        py_files += [f'{d}{f}' for f in listdir(d) if '.py' in f]
 
     for py in py_files:
         with open(py, 'r') as f:
@@ -217,7 +220,7 @@ async def todo(ctx):
 
             if todos:
                 embed = discord.Embed(
-                    title=f'{py}',
+                    title=f'{py[2:]}',
                     description='DO:\n\n' + '\n\n'.join(todos),
                     url=f'https://dmigit.uqtr.ca/siroisc/sigle_finder/blob/master/{py}',
                     color=randint(0, 16777216)
