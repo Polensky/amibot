@@ -40,7 +40,6 @@ class Session(Enum):
     def __str__(self):
         if self == Session.ETE:
             return "été"
-
         return self.name.lower()
 
 
@@ -61,11 +60,12 @@ class Cours:
         self.professor = None
 
     def fetch_description(self) -> bool:
+        """Fetches the course description and sets appropriate attributes.
+        return false if it fails
         """
-        Fetches the course description and sets appropriate attributes.
-        """
-        self.url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/couw001?owa_type=P&owa_sigle={self.sigle}'
-        res = requests.get(self.url)
+        payload = {'owa_sigle': self.sigle}
+        self.url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/couw001'
+        res = requests.get(self.url, params=payload)
         soup = BeautifulSoup(res.text, "html.parser")
 
         if soup.find('center'):
@@ -96,11 +96,13 @@ class Cours:
 
 
     def fetch_horaire(self, session: Session, annee: str) -> bool:
+        """Fetches the course schedule.
+        session -- a Session enum
+        annee   -- which year to fetch the schedule
         """
-        Fetches the course schedule.
-        """
-        self.url= f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f?owa_sigle={self.sigle}&owa_anses={annee}{session.value}&owa_apercu=N'
-        res = requests.get(self.url)
+        payload = {'owa_sigle': self.sigle, 'owa_anses': f'{annee}{session.value}'}
+        self.url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f'
+        res = requests.get(self.url, params=payload)
         soup = BeautifulSoup(res.text, "html.parser")
 
         soup_info = soup.find('td', {'class': 'horaireinfo'})
@@ -133,16 +135,12 @@ class Cours:
         return True
 
     def horaire_cours(self) -> bool:
-        """
-        Returns the schedule for the current Cours instance.
-        """
+        """Returns the schedule for the current Cours instance."""
         return Cours._horaire_text_table([self])
 
     @staticmethod
     def _horaire_text_table(cours) -> bool:
-        """
-        Gets the schedule as a table.
-        """
+        """Gets the schedule as a table."""
         # TODO enlever la partie transparente de l'image
 
         fig = plt.figure(dpi=250)
