@@ -3,6 +3,8 @@ Custom logger
 """
 import logging
 
+# TODO rename logger with start time and date
+
 def start_logger():
     """
     Start custom logger
