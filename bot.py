@@ -2,119 +2,64 @@
 Bot du discord de l'AMI
 """
 import os
-import json
 import datetime
 import re
+from random import randint
+import logging
 from os import listdir
 import traceback
-import logging
-import requests
 from dotenv import load_dotenv
 from discord.ext import commands
 import discord
+import setproctitle
 from sigle_logger import start_logger
-from siglfinder import Cours, Requester
+from models.uqtr import Cours, Session
+from models.pep import Requester
+from bot_exception import WrongArgument, NoResult
+import models.corona as coro
+import models.uqtr as uqtr
 
 
+setproctitle.setproctitle('amibot')
 start_logger()
 LOGGER = logging.getLogger('sigle_LOGGER')
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-NOTHING_FOUND_MSG = 'Sigle absent de la banque de cours'
-SESSIONS = ['hiver', 'été', 'automne']
 
 bot = commands.Bot(command_prefix=';')
 
 @bot.event
 async def on_ready():
-    """
-    Quand le bot est pret
-    """
-    LOGGER.warning(f'{bot.user} has connected to Discord!')
+    """Quand le bot est pret"""
+    LOGGER.info(f'{bot.user} has connected to Discord!')
 
 @bot.command(name='sigle', help='[sigle] | Donne la description du cours.')
 async def get_sigle(ctx, sigle: str):
-    """
-    Commande pour obtenir la description d'un cours
-    """
-    cours = Cours(sigle)
-    success = cours.fetch_description()
-    if not success:
-        await ctx.send(NOTHING_FOUND_MSG)
+    """Commande pour obtenir la description d'un cours"""
+    try:
+        embed = uqtr.my_embed_desciption(sigle)
+    except (WrongArgument, NoResult) as error:
+        await ctx.send(error)
         return
-
-    embed = discord.Embed(
-        title=cours.titre,
-        description=cours.description,
-        url=cours.url,
-        color=0x006534
-    )
-    embed.add_field(name="Niveau", value=cours.niveau, inline=True)
-    embed.add_field(name="Département", value=cours.departement, inline=True)
-
-    if hasattr(cours, "prealables"):
-        for i, prealable in enumerate(cours.prealables):
-            embed.add_field(
-                name=f'Préalable {i+1}',
-                value=' ou '.join(prealable),
-                inline=False
-            )
     await ctx.send(embed=embed)
 
 @bot.command(name='horaire', help='[sigle] [session] [année (optionel)]')
 async def get_horaire(ctx, sigle: str, session: str, annee=None):
-    """
-    Obtenir l'horaire d'un cours pour une session et une annee donnee.
-    """
-    if not annee:
-        annee = str(datetime.datetime.now().year)
+    """Obtenir l'horaire d'un cours pour une session et une annee donnee."""
     try:
-        index_session = SESSIONS.index(session) + 1
-    except ValueError:
-        await ctx.send(f'`{session}` n\'est pas une session valide.\n' \
-                ' Essayez plutôt `hiver`, `été`, ou `automne`.')
-
-    cours = Cours(sigle)
-    try:
-        success = cours.fetch_horaire(index_session, annee)
-    except Exception:
-        err_tace = traceback.format_exc()
-        LOGGER.exception(f'Bot broke:')
-        await ctx.send(f':skull: Bon t\'as cassé le bot, ' \
-                f'voici le message d\'erreur ```{err_tace}```')
-
-    if not success:
-        LOGGER.warning(f'Bad URL for {session} {annee} for course {sigle} at\n{cours.url}')
-        await ctx.send(f'L\'horaire de la session {session} {annee} ' \
-                f'pour le cours {sigle} n\'est pas encore publié.')
+        embed = uqtr.my_embed_horaire(sigle, session, annee)
+    except (WrongArgument, NoResult) as error:
+        await ctx.send(error)
         return
-
-    embed = discord.Embed(
-        title=cours.titre,
-        description=cours.professor,
-        url=cours.url,
-        color=0x006534
-    )
-    if len(cours.horaires) > 1:
-        pass
-    else:
-        jour, heure, lieu = cours.horaires[0]
-        horaire_str = jour + ' de ' + heure
-        embed.add_field(name="Horaire", value=horaire_str, inline=True)
-        embed.add_field(name="Lieu", value=lieu, inline=True)
-
     await ctx.send(embed=embed)
 
 @bot.command(name='img_horaire', help='[session] [sigles séparés par des espaces]')
 async def get_img_horaire(ctx, session: str, *sigles: str):
-    """
-    Commande pour obtenir une image de l'horaire de plusieurs cours.
-    """
+    """Commande pour obtenir une image de l'horaire de plusieurs cours."""
     annee = str(datetime.datetime.now().year)
-    try:
-        index_session = SESSIONS.index(session) + 1
-    except ValueError:
+    sess_enum = Session.from_session_string(session)
+    if not sess_enum:
         await ctx.send(f'`{session}` n\'est pas une session valide.\n' \
                 ' Essayez plutôt `hiver`, `été`, ou `automne`.')
 
@@ -123,7 +68,7 @@ async def get_img_horaire(ctx, session: str, *sigles: str):
     for sigle in sigles:
         cours = Cours(sigle)
         try:
-            if cours.fetch_horaire(index_session, annee):
+            if cours.fetch_horaire(sess_enum, annee):
                 cours_lst.append(cours)
             else:
                 fail_lst.append(cours)
@@ -140,16 +85,14 @@ async def get_img_horaire(ctx, session: str, *sigles: str):
                     f'pour le cours {fail.sigle} n\'est pas encore publié.')
 
     if Cours._horaire_text_table(cours_lst):
-        await ctx.send(file=discord.File('horaire_img.png'))
+        await ctx.send(file=discord.File('images\\horaire_img.png'))
     else:
         LOGGER.error('Image generation failed.')
         await ctx.send(f'Il y a eu un problème dans la génération d\'image')
 
 @bot.command(name='zen', help='Zen')
 async def zen(ctx, color='006534'):
-    """
-    ZEN
-    """
+    """ZEN"""
     if len(color) == 6:
         color = f'0x{color}'
         try:
@@ -171,15 +114,12 @@ async def zen(ctx, color='006534'):
 
 @bot.command(name='pep', help='[pep number]')
 async def pep(ctx, num: int, color='006534'):
-    """
-    Fetch les informations d'un pep.
-    """
+    """Fetch les informations d'un pep."""
     if num > 9999:
         await ctx.send('There aren\'t that many peps!')
         return
 
-    if len(color) == 6:
-        color = f'0x{color}'
+    if len(color) <= 6:
         try:
             color = int(color, 16)
         except ValueError:
@@ -207,7 +147,10 @@ async def todo(ctx):
     """
     Affiche tous les TODO dans le code.
     """
-    py_files = [f for f in listdir('./') if '.py' in f]
+    dirs = ['./', './models/']
+    py_files = []
+    for d in dirs:
+        py_files += [f'{d}{f}' for f in listdir(d) if '.py' in f]
 
     for py in py_files:
         with open(py, 'r') as f:
@@ -215,32 +158,17 @@ async def todo(ctx):
 
             if todos:
                 embed = discord.Embed(
-                    title=f'{py}',
+                    title=f'{py[2:]}',
                     description='DO:\n\n' + '\n\n'.join(todos),
                     url=f'https://dmigit.uqtr.ca/siroisc/sigle_finder/blob/master/{py}',
-                    color=0x006534
+                    color=randint(0, 16777216)
                 )
                 await ctx.send(embed=embed)
 
 @bot.command(name='corona', help='COVID-19')
 async def corona(ctx):
-    """
-    C O R O N A
-    """
-    res = requests.get('https://coronavirus-tracker-api.herokuapp.com/all')
-    j = json.loads(res.content)
-    confirmed = j['latest']['confirmed']
-    deaths = j['latest']['deaths']
-    recovered = j['latest']['recovered']
-    embed = discord.Embed(
-        title=f':beer: Corona update :skull:',
-        url='https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6',
-        color=0x006534
-    )
-    embed.add_field(name="Confirmés", value=confirmed)
-    embed.add_field(name="Morts", value=deaths)
-    embed.add_field(name="Rétablis", value=recovered)
-    await ctx.send(embed=embed)
+    """ C O R O N A """
+    await ctx.send(embed=coro.my_embed())
 
 
 bot.run(TOKEN)
