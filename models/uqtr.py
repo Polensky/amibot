@@ -85,8 +85,7 @@ class Cours:
         self.description = soup.find('div', {'class': 'textedescription'}).contents[1].text
         self.description = re.sub('\\r ', '\\n', self.description)
 
-        m = re.search('Préalable', self.description)
-        if m:
+        if m := re.search('Préalable', self.description):
             self.description = self.description[:m.start()]
 
             desc = soup.find('div', {'class': 'textedescription'})
@@ -153,15 +152,15 @@ class Cours:
         # TODO enlever la partie transparente de l'image
 
         fig = plt.figure(dpi=250)
-        ax = fig.add_subplot(1,1,1)
+        ax = fig.add_subplot(1, 1, 1)
 
         semaine = {
             '': ['08h30-11h30', '12h00-15h00', '15h30-18h30', '19h00-22h00'],
-            'lundi': ['','','', ''],
-            'mardi': ['','','', ''],
-            'mercredi': ['','','', ''],
-            'jeudi': ['','','', ''],
-            'vendredi': ['','','', ''],
+            'lundi': ['', '', '', ''],
+            'mardi': ['', '', '', ''],
+            'mercredi': ['', '', '', ''],
+            'jeudi': ['', '', '', ''],
+            'vendredi': ['', '', '', ''],
         }
 
         for c in cours:
@@ -191,7 +190,7 @@ class Cours:
             cellLoc='center'
         )
         table.set_fontsize(14)
-        table.scale(2,2)
+        table.scale(2, 2)
         ax.axis('off')
 
         ax.patch.set_visible(False)
