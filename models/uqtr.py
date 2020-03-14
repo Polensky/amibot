@@ -3,31 +3,37 @@ Module containing functions that fetch data related to UQTR
 """
 import re
 from enum import Enum
+import datetime
 import logging
-from typing import List
+import traceback
+import sys
 import requests
 import matplotlib.pyplot as plt
+import discord
 from bs4 import BeautifulSoup
 import pandas as pd
+sys.path.insert(0, '..')
+from bot_exception import NoResult, WrongArgument
+
 
 #TODO eviter que sa casse pour des cours comme SIF1040, PIF1005
 #TODO gerer les cours avec plusieurs groupes (ex.: ADM1016 hiv 2020)
 
 LOGGER = logging.getLogger('sigle_logger')
-
+NOTHING_FOUND_MSG = 'Sigle absent de la banque de cours'
+WRONG_SESSION = lambda session: f'`{session}` n\'est pas une session valide.' \
+                ' Essayez plutôt `hiver`, `été`, ou `automne`.'
+NOT_AVAILABLE = lambda sigle, session, annee: f'L\'horaire de la session {session} {annee} ' \
+                f'pour le cours {sigle} n\'est pas encore publié.'
 class Session(Enum):
-    """
-    Enumaration pour les sessions
-    """
+    """Enumaration pour les sessions"""
     HIVER = 1
     ETE = 2
     AUTOMNE = 3
 
     @classmethod
     def from_session_string(cls, session: str):
-        """
-        Convert string into session enum equivalent
-        """
+        """Convert string into session enum equivalent"""
         ses_enum = None
         if session == 'hiver':
             ses_enum = cls.HIVER
@@ -95,7 +101,7 @@ class Cours:
         return True
 
 
-    def fetch_horaire(self, session: Session, annee: str) -> bool:
+    def fetch_horaire(self, session: Session, annee: str):
         """Fetches the course schedule.
         session -- a Session enum
         annee   -- which year to fetch the schedule
@@ -103,6 +109,7 @@ class Cours:
         payload = {'owa_sigle': self.sigle, 'owa_anses': f'{annee}{session.value}'}
         self.url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f'
         res = requests.get(self.url, params=payload)
+        self.url = res.url
         soup = BeautifulSoup(res.text, "html.parser")
 
         soup_info = soup.find('td', {'class': 'horaireinfo'})
@@ -118,7 +125,9 @@ class Cours:
         professor = re.sub('\xa0', '', professor.text)
         self.professor = re.sub('\\n', '', professor).strip()
 
+        soup_horaire.find('body')
         horaires = soup_horaire.find_all('tr')
+        les_horaires = None
         if len(horaires) > 2:
             pass # treat all row
         else:
@@ -131,8 +140,8 @@ class Cours:
             lieu = soup_horaire.find('td', {'class': 'heure'}).find_next().text
             lieu = lieu.strip()
 
-            self.horaires = [(jour, heure, lieu)]
-        return True
+            les_horaires = [(jour, heure, lieu)]
+        return les_horaires
 
     def horaire_cours(self) -> bool:
         """Returns the schedule for the current Cours instance."""
@@ -191,3 +200,59 @@ class Cours:
         plt.savefig('images\\horaire_img.png', bbox_inches='tight', pad_inches=0)
 
         return True
+
+
+def my_embed_desciption(sigle: str) -> discord.Embed:
+    """Return an embed description of a course"""
+    cours = Cours(sigle)
+    success = cours.fetch_description()
+    if not success:
+        raise NoResult(NOTHING_FOUND_MSG)
+
+    embed = discord.Embed(
+        title=cours.titre,
+        description=cours.description,
+        url=cours.url,
+        color=0x006534
+    )
+    embed.add_field(name="Niveau", value=cours.niveau, inline=True)
+    embed.add_field(name="Département", value=cours.departement, inline=True)
+
+    if cours.prealables:
+        for i, prealable in enumerate(cours.prealables):
+            embed.add_field(
+                name=f'Préalable {i+1}',
+                value=' ou '.join(prealable),
+                inline=False
+            )
+    return embed
+
+def my_embed_horaire(sigle: str, session: str, annee: str) -> discord.Embed:
+    """Return an embed schedule of a course"""
+    if not annee:
+        annee = str(datetime.datetime.now().year)
+
+    sess_enum = Session.from_session_string(session)
+    if not sess_enum:
+        raise WrongArgument(WRONG_SESSION(session))
+
+    cours = Cours(sigle)
+    if les_horaires := cours.fetch_horaire(sess_enum, annee):
+        embed = discord.Embed(
+            title=cours.titre,
+            description=cours.professor,
+            url=cours.url,
+            color=0x006534
+        )
+        if len(les_horaires) > 1:
+            pass
+        else:
+            jour, heure, lieu = les_horaires[0]
+            horaire_str = jour + ' de ' + heure
+            embed.add_field(name="Horaire", value=horaire_str, inline=True)
+            embed.add_field(name="Lieu", value=lieu, inline=True)
+    else:
+        LOGGER.warning(f'Bad URL for {session} {annee} for course {sigle} at\n{cours.url}')
+        raise NoResult(NOT_AVAILABLE(sigle, session, annee))
+
+    return embed

@@ -15,7 +15,9 @@ import setproctitle
 from sigle_logger import start_logger
 from models.uqtr import Cours, Session
 from models.pep import Requester
+from bot_exception import WrongArgument, NoResult
 import models.corona as coro
+import models.uqtr as uqtr
 
 
 setproctitle.setproctitle('amibot')
@@ -24,83 +26,32 @@ LOGGER = logging.getLogger('sigle_LOGGER')
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-NOTHING_FOUND_MSG = 'Sigle absent de la banque de cours'
 
 bot = commands.Bot(command_prefix=';')
 
 @bot.event
 async def on_ready():
     """Quand le bot est pret"""
-    LOGGER.warning(f'{bot.user} has connected to Discord!')
+    LOGGER.info(f'{bot.user} has connected to Discord!')
 
 @bot.command(name='sigle', help='[sigle] | Donne la description du cours.')
 async def get_sigle(ctx, sigle: str):
     """Commande pour obtenir la description d'un cours"""
-    cours = Cours(sigle)
-    success = cours.fetch_description()
-    if not success:
-        await ctx.send(NOTHING_FOUND_MSG)
+    try:
+        embed = uqtr.my_embed_desciption(sigle)
+    except (WrongArgument, NoResult) as error:
+        await ctx.send(error)
         return
-
-    embed = discord.Embed(
-        title=cours.titre,
-        description=cours.description,
-        url=cours.url,
-        color=0x006534
-    )
-    embed.add_field(name="Niveau", value=cours.niveau, inline=True)
-    embed.add_field(name="Département", value=cours.departement, inline=True)
-
-    if cours.prealables:
-        for i, prealable in enumerate(cours.prealables):
-            embed.add_field(
-                name=f'Préalable {i+1}',
-                value=' ou '.join(prealable),
-                inline=False
-            )
     await ctx.send(embed=embed)
 
 @bot.command(name='horaire', help='[sigle] [session] [année (optionel)]')
 async def get_horaire(ctx, sigle: str, session: str, annee=None):
     """Obtenir l'horaire d'un cours pour une session et une annee donnee."""
-    sess_enum = Session.from_session_string(session)
-    if not annee:
-        annee = str(datetime.datetime.now().year)
-
-    if not sess_enum:
-        await ctx.send(f'`{session}` n\'est pas une session valide.' \
-                ' Essayez plutôt `hiver`, `été`, ou `automne`.')
-        return
-
-    cours = Cours(sigle)
     try:
-        success = cours.fetch_horaire(sess_enum, annee)
-    except Exception:
-        err_tace = traceback.format_exc()
-        LOGGER.exception(f'Bot broke:')
-        await ctx.send(f':skull: Bon t\'as cassé le bot, ' \
-                f'voici le message d\'erreur ```{err_tace}```')
-
-    if not success:
-        LOGGER.warning(f'Bad URL for {session} {annee} for course {sigle} at\n{cours.url}')
-        await ctx.send(f'L\'horaire de la session {session} {annee} ' \
-                f'pour le cours {sigle} n\'est pas encore publié.')
+        embed = uqtr.my_embed_horaire(sigle, session, annee)
+    except (WrongArgument, NoResult) as error:
+        await ctx.send(error)
         return
-
-    embed = discord.Embed(
-        title=cours.titre,
-        description=cours.professor,
-        url=cours.url,
-        color=0x006534
-    )
-    if len(cours.horaires) > 1:
-        pass
-    else:
-        jour, heure, lieu = cours.horaires[0]
-        horaire_str = jour + ' de ' + heure
-        embed.add_field(name="Horaire", value=horaire_str, inline=True)
-        embed.add_field(name="Lieu", value=lieu, inline=True)
-
     await ctx.send(embed=embed)
 
 @bot.command(name='img_horaire', help='[session] [sigles séparés par des espaces]')
