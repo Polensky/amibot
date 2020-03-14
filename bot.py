@@ -2,14 +2,12 @@
 Bot du discord de l'AMI
 """
 import os
-import json
 import datetime
 import re
 from random import randint
 import logging
 from os import listdir
 import traceback
-import requests
 from dotenv import load_dotenv
 from discord.ext import commands
 import discord
@@ -17,6 +15,7 @@ import setproctitle
 from sigle_logger import start_logger
 from models.uqtr import Cours, Session
 from models.pep import Requester
+import models.corona as coro
 
 
 setproctitle.setproctitle('amibot')
@@ -31,16 +30,12 @@ bot = commands.Bot(command_prefix=';')
 
 @bot.event
 async def on_ready():
-    """
-    Quand le bot est pret
-    """
+    """Quand le bot est pret"""
     LOGGER.warning(f'{bot.user} has connected to Discord!')
 
 @bot.command(name='sigle', help='[sigle] | Donne la description du cours.')
 async def get_sigle(ctx, sigle: str):
-    """
-    Commande pour obtenir la description d'un cours
-    """
+    """Commande pour obtenir la description d'un cours"""
     cours = Cours(sigle)
     success = cours.fetch_description()
     if not success:
@@ -67,9 +62,7 @@ async def get_sigle(ctx, sigle: str):
 
 @bot.command(name='horaire', help='[sigle] [session] [année (optionel)]')
 async def get_horaire(ctx, sigle: str, session: str, annee=None):
-    """
-    Obtenir l'horaire d'un cours pour une session et une annee donnee.
-    """
+    """Obtenir l'horaire d'un cours pour une session et une annee donnee."""
     sess_enum = Session.from_session_string(session)
     if not annee:
         annee = str(datetime.datetime.now().year)
@@ -112,9 +105,7 @@ async def get_horaire(ctx, sigle: str, session: str, annee=None):
 
 @bot.command(name='img_horaire', help='[session] [sigles séparés par des espaces]')
 async def get_img_horaire(ctx, session: str, *sigles: str):
-    """
-    Commande pour obtenir une image de l'horaire de plusieurs cours.
-    """
+    """Commande pour obtenir une image de l'horaire de plusieurs cours."""
     annee = str(datetime.datetime.now().year)
     sess_enum = Session.from_session_string(session)
     if not sess_enum:
@@ -150,9 +141,7 @@ async def get_img_horaire(ctx, session: str, *sigles: str):
 
 @bot.command(name='zen', help='Zen')
 async def zen(ctx, color='006534'):
-    """
-    ZEN
-    """
+    """ZEN"""
     if len(color) == 6:
         color = f'0x{color}'
         try:
@@ -174,9 +163,7 @@ async def zen(ctx, color='006534'):
 
 @bot.command(name='pep', help='[pep number]')
 async def pep(ctx, num: int, color='006534'):
-    """
-    Fetch les informations d'un pep.
-    """
+    """Fetch les informations d'un pep."""
     if num > 9999:
         await ctx.send('There aren\'t that many peps!')
         return
@@ -229,23 +216,8 @@ async def todo(ctx):
 
 @bot.command(name='corona', help='COVID-19')
 async def corona(ctx):
-    """
-    C O R O N A
-    """
-    res = requests.get('https://coronavirus-tracker-api.herokuapp.com/all')
-    j = json.loads(res.content)
-    confirmed = j['latest']['confirmed']
-    deaths = j['latest']['deaths']
-    recovered = j['latest']['recovered']
-    embed = discord.Embed(
-        title=f':beer: Corona update :skull:',
-        url='https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6',
-        color=0x006534
-    )
-    embed.add_field(name="Confirmés", value=confirmed)
-    embed.add_field(name="Morts", value=deaths)
-    embed.add_field(name="Rétablis", value=recovered)
-    await ctx.send(embed=embed)
+    """ C O R O N A """
+    await ctx.send(embed=coro.my_embed())
 
 
 bot.run(TOKEN)
