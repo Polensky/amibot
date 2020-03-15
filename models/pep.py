@@ -1,12 +1,15 @@
 """
 Module containing functions that fetch data related to python
 """
-import requests
+import requests # pylint: disable=no-absolute-import
 from bs4 import BeautifulSoup
 
 
 class Pep:
-    def __init__(self, pep: str, desc: str, author: str, URL: str, fields=[]):
+    """
+    Object representation of Pep data
+    """
+    def __init__(self, pep: str, desc: str, author: str, URL: str, fields=[]): # pylint: disable=dangerous-default-value
         self.pep = pep
         self.desc = desc
         self.author = author
@@ -14,6 +17,9 @@ class Pep:
         self.fields = fields
 
 class Requester:
+    """
+    Makes requests for Pep information
+    """
     @staticmethod
     def zen() -> str:
         """
@@ -50,8 +56,9 @@ class Requester:
 
         table_dict = dict(zip(field_names, field_bodies))
 
-        pep = Pep(f'Pep{table_dict.pop("PEP:")}', table_dict.pop('Title:'), table_dict.pop('Author:'), pep_url)
+        pep = Pep(f'Pep{table_dict.pop("PEP:")}', table_dict.pop('Title:'), table_dict.pop('Author:'), pep_url) # pylint: disable=line-too-long
 
-        pep.fields = [{'inline': False, 'name': name, 'value': body} for name, body in table_dict.items() if body]
+
+        pep.fields = [{'inline': False, 'name': name, 'value': body} for name, body in table_dict.items() if body] # pylint: disable=line-too-long
 
         return pep

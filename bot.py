@@ -1,7 +1,7 @@
 """
 Bot du discord de l'AMI
 """
-import os
+import os # pylint: disable=no-absolute-import
 import datetime
 import re
 from random import randint
@@ -20,7 +20,7 @@ import models.corona as coro
 import models.uqtr as uqtr
 
 
-setproctitle.setproctitle('amibot')
+setproctitle.setproctitle('amibot') # pylint: disable=c-extension-no-member
 start_logger()
 LOGGER = logging.getLogger('sigle_LOGGER')
 
@@ -32,7 +32,7 @@ bot = commands.Bot(command_prefix=';')
 @bot.event
 async def on_ready():
     """Quand le bot est pret"""
-    LOGGER.info(f'{bot.user} has connected to Discord!')
+    LOGGER.info('%s has connected to Discord!', bot.user)
 
 @bot.command(name='sigle', help='[sigle] | Donne la description du cours.')
 async def get_sigle(ctx, sigle: str):
@@ -72,19 +72,21 @@ async def get_img_horaire(ctx, session: str, *sigles: str):
                 cours_lst.append(cours)
             else:
                 fail_lst.append(cours)
-        except Exception:
+        except Exception: # pylint: disable=broad-except
             err_tace = traceback.format_exc()
-            LOGGER.exception(f'Bot broke:')
+            LOGGER.exception('Bot broke:')
             await ctx.send(f':skull: Bon t\'as cassé le bot, ' \
                     f'voici le message d\'erreur ```{err_tace}```')
 
     if fail_lst:
         for fail in fail_lst:
-            LOGGER.warning(f'Bad URL for {session} {annee} for course {fail.sigle} at\n{fail.url}')
+            LOGGER.warning(
+                'Bad URL for %s %s for course %s at\n%s', session, annee, fail.sigle, fail.url
+                )
             await ctx.send(f'L\'horaire de la session {session} {annee} ' \
                     f'pour le cours {fail.sigle} n\'est pas encore publié.')
 
-    if Cours._horaire_text_table(cours_lst):
+    if Cours._horaire_text_table(cours_lst): # pylint: disable=protected-access
         await ctx.send(file=discord.File('images\\horaire_img.png'))
     else:
         LOGGER.error('Image generation failed.')
@@ -129,15 +131,15 @@ async def pep(ctx, num: int, color='006534'):
         await ctx.send('Use valid hex strings you animal!')
         color = 0x006534
 
-    if pep := Requester.anypep(num):
+    if req_pep := Requester.anypep(num):
         embed = discord.Embed(
-            title=pep.pep,
-            description=pep.desc,
-            url=pep.URL,
+            title=req_pep.pep,
+            description=req_pep.desc,
+            url=req_pep.URL,
             color=color
         )
-        embed.set_author(name=pep.author)
-        embed._fields = pep.fields
+        embed.set_author(name=req_pep.author)
+        embed._fields = req_pep.fields
         await ctx.send(embed=embed)
     else:
         await ctx.send(f'Pep{num} does not exist!')
@@ -147,14 +149,14 @@ async def todo(ctx):
     """
     Affiche tous les TODO dans le code.
     """
-    dirs = ['./', './models/']
+    py_dirs = ['./', './models/']
     py_files = []
-    for d in dirs:
+    for d in py_dirs:
         py_files += [f'{d}{f}' for f in listdir(d) if '.py' in f]
 
     for py in py_files:
         with open(py, 'r') as f:
-            todos = [f'line {i}: {t[0]}' for i, line in enumerate(f.readlines()) if (t := re.findall(r'^(?:\s+)?#(?:\s+)?TODO\s+(.*)$', line))]
+            todos = [f'line {i}: {t[0]}' for i, line in enumerate(f.readlines()) if (t := re.findall(r'^(?:\s+)?#(?:\s+)?TODO\s+(.*)$', line))] # pylint: disable=line-too-long,superfluous-parens
 
             if todos:
                 embed = discord.Embed(
