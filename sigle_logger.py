@@ -1,9 +1,8 @@
 """
 Custom logger
 """
-import logging
-
-# TODO rename logger with start time and date
+import logging # pylint: disable=no-absolute-import
+from datetime import datetime
 
 def start_logger():
     """
@@ -11,9 +10,12 @@ def start_logger():
     """
     logger = logging.getLogger(__name__)
 
+    date = datetime.now()
+    date_str = date.strftime('%d-%b-%Y')
+
     # Create handlers
     c_handler = logging.StreamHandler()
-    f_handler = logging.FileHandler('logging/sigle.log')
+    f_handler = logging.FileHandler(f'logging/amibot;{date_str}.log')
     c_handler.setLevel(logging.INFO)
     f_handler.setLevel(logging.WARNING)
 

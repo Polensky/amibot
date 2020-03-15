@@ -1,23 +1,22 @@
 """
 Module containing functions that fetch data related to UQTR
 """
-import re
+import re # pylint: disable=no-absolute-import
 from enum import Enum
 import datetime
 import logging
-import traceback
 import sys
 import requests
 import matplotlib.pyplot as plt
 import discord
 from bs4 import BeautifulSoup
 import pandas as pd
-sys.path.insert(0, '..')
 from bot_exception import NoResult, WrongArgument
+sys.path.insert(0, '..')
 
 
-#TODO eviter que sa casse pour des cours comme SIF1040, PIF1005
-#TODO gerer les cours avec plusieurs groupes (ex.: ADM1016 hiv 2020)
+# TODO eviter que sa casse pour des cours comme SIF1040, PIF1005
+# TODO gerer les cours avec plusieurs groupes (ex.: ADM1016 hiv 2020)
 
 LOGGER = logging.getLogger('sigle_logger')
 NOTHING_FOUND_MSG = 'Sigle absent de la banque de cours'
@@ -46,7 +45,7 @@ class Session(Enum):
     def __str__(self):
         if self == Session.ETE:
             return "été"
-        return self.name.lower()
+        return self.name.lower() # pylint: disable=no-member
 
 
 class Cours:
@@ -180,8 +179,6 @@ class Cours:
 
         dc = pd.DataFrame(semaine)
 
-        dc = pd.DataFrame(semaine)
-
         table = ax.table(
             cellText=dc.values,
             colWidths=[0.1]*len(dc.columns),
@@ -251,7 +248,7 @@ def my_embed_horaire(sigle: str, session: str, annee: str) -> discord.Embed:
             embed.add_field(name="Horaire", value=horaire_str, inline=True)
             embed.add_field(name="Lieu", value=lieu, inline=True)
     else:
-        LOGGER.warning(f'Bad URL for {session} {annee} for course {sigle} at\n{cours.url}')
+        LOGGER.warning('Bad URL for %s %s for course %s at\n%s', session, annee, sigle, cours.url)
         raise NoResult(NOT_AVAILABLE(sigle, session, annee))
 
     return embed

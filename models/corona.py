@@ -1,5 +1,5 @@
 """C O R O N A"""
-import json
+import json # pylint: disable=no-absolute-import
 import requests
 import discord
 
