@@ -22,7 +22,7 @@ import models.uqtr as uqtr
 
 setproctitle.setproctitle('amibot') # pylint: disable=c-extension-no-member
 start_logger()
-LOGGER = logging.getLogger('sigle_LOGGER')
+LOGGER = logging.getLogger('sigle_logger')
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -32,7 +32,7 @@ bot = commands.Bot(command_prefix=';')
 @bot.event
 async def on_ready():
     """Quand le bot est pret"""
-    LOGGER.info('%s has connected to Discord!', bot.user)
+    LOGGER.warning('%s has connected to Discord!', bot.user)
 
 @bot.command(name='sigle', help='[sigle] | Donne la description du cours.')
 async def get_sigle(ctx, sigle: str):
@@ -172,8 +172,7 @@ async def corona(ctx):
     """ C O R O N A """
     await ctx.send(embed=coro.my_embed())
 
-
-bot.run(TOKEN)
-
-# TODO make this line work with keyboardinterrupt. Catching seems to cause bot problems.
-LOGGER.info('Bot shut down')
+try:
+    bot.run(TOKEN)
+finally:
+    LOGGER.warning('Bot shut down')
