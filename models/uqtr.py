@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import discord
 from bs4 import BeautifulSoup
 import pandas as pd
+from typing import List
 from bot_exception import NoResult, WrongArgument
 sys.path.insert(0, '..')
 
@@ -48,6 +49,25 @@ class Session(Enum):
         return self.name.lower() # pylint: disable=no-member
 
 
+class Horaire:
+    """
+    Objet représentant l'horaire d'un groupe
+    """
+    def __init__(self, jour: str, heure: str, lieu: str):
+        self.jour = jour
+        self.heure = heure
+        self.lieu = lieu
+
+
+class Groupe:
+    """
+    Objet représentant un groupe dans un cours
+    """
+    def __init__(self, no: int, horaires: List[Horaire]):
+        self.no = no
+        self.horaires = horaires
+
+
 class Cours:
     """
     Objet representant un cours de l'UQTR
@@ -63,6 +83,7 @@ class Cours:
         self.session = None
         self.annee = None
         self.professor = None
+        self.groupes = List[Groupe]
 
     def fetch_description(self) -> bool:
         """Fetches the course description and sets appropriate attributes.
@@ -127,7 +148,8 @@ class Cours:
         horaires = soup_horaire.find_all('tr')
         les_horaires = None
         if len(horaires) > 2:
-            pass # treat all row
+            # treat all rows
+            LOGGER.error('Cours à plusieurs horaires: %s', self.sigle)
         else:
             jour = soup_horaire.find('strong').text
 
