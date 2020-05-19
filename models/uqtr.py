@@ -164,7 +164,6 @@ class Cours:
 
                 horaire_tuple.append((jour, heure, lieu))
 
-            print(horaire_tuple)
             horaire_court = []
             horaire = []
             for h in horaire_tuple:
