@@ -120,7 +120,7 @@ class Cours:
         return True
 
 
-    def fetch_horaire(self, session: Session, annee: str):
+    def fetch_horaire(self, session: Session, annee: str) -> List[Groupe]:
         """Fetches the course schedule.
         session -- a Session enum
         annee   -- which year to fetch the schedule
@@ -132,7 +132,7 @@ class Cours:
         soup = BeautifulSoup(res.text, "html.parser")
 
         soup_info = soup.find('td', {'class': 'horaireinfo'})
-        soup_horaire = soup.find('td', {'class': 'horairedates'})
+        #soup_horaire = soup.find('td', {'class': 'horairedates'})
         if not soup_info:
             return False
 
@@ -144,24 +144,37 @@ class Cours:
         professor = re.sub('\xa0', '', professor.text)
         self.professor = re.sub('\\n', '', professor).strip()
 
-        soup_horaire.find('body')
-        horaires = soup_horaire.find_all('tr')
-        les_horaires = None
-        if len(horaires) > 2:
-            # treat all rows
-            LOGGER.error('Cours à plusieurs horaires: %s', self.sigle)
-        else:
-            jour = soup_horaire.find('strong').text
+        soup_groupe = soup.find_all('table', {'class': 'dateshoraire'})
 
-            heure = soup_horaire.find('td', {'class': 'heure'})
-            heure = re.sub('\xa0', '', heure.text)
-            heure = re.sub('\\n', '', heure)
+        g_list = []
 
-            lieu = soup_horaire.find('td', {'class': 'heure'}).find_next().text
-            lieu = lieu.strip()
+        for i, s_group in enumerate(soup_groupe):
+            horaire_tuple = []
 
-            les_horaires = [(jour, heure, lieu)]
-        return les_horaires
+            soup_horaire = s_group.find_all('tr')[1:]
+            for s_horaire in soup_horaire:
+                jour = s_horaire.find('td').text.split()[0]
+
+                heure = s_horaire.find('td', {'class': 'heure'})
+                heure = re.sub('\xa0', '', heure.text)
+                heure = re.sub('\\n', '', heure)
+
+                lieu = s_horaire.find('td', {'class': 'heure'}).find_next().text
+                lieu = lieu.strip()
+
+                horaire_tuple.append((jour, heure, lieu))
+
+            print(horaire_tuple)
+            horaire_court = []
+            horaire = []
+            for h in horaire_tuple:
+                if h not in horaire_court:
+                    horaire_court.append(h)
+                    horaire.append(Horaire(h[0], h[1], h[2]))
+
+            g_list.append(Groupe(i, horaire))
+
+        return g_list
 
     def horaire_cours(self) -> bool:
         """Returns the schedule for the current Cours instance."""
@@ -245,7 +258,7 @@ def my_embed_desciption(sigle: str) -> discord.Embed:
             )
     return embed
 
-def my_embed_horaire(sigle: str, session: str, annee: str) -> discord.Embed:
+def my_embed_horaire(sigle: str, session: str, annee: str) -> List[discord.Embed]:
     """Return an embed schedule of a course"""
     if not annee:
         annee = str(datetime.datetime.now().year)
@@ -255,20 +268,18 @@ def my_embed_horaire(sigle: str, session: str, annee: str) -> discord.Embed:
         raise WrongArgument(WRONG_SESSION(session))
 
     cours = Cours(sigle)
-    if les_horaires := cours.fetch_horaire(sess_enum, annee):
+    if les_groupes := cours.fetch_horaire(sess_enum, annee):
         embed = discord.Embed(
             title=cours.titre,
             description=cours.professor,
             url=cours.url,
             color=0x006534
         )
-        if len(les_horaires) > 1:
-            pass
-        else:
-            jour, heure, lieu = les_horaires[0]
-            horaire_str = jour + ' de ' + heure
-            embed.add_field(name="Horaire", value=horaire_str, inline=True)
-            embed.add_field(name="Lieu", value=lieu, inline=True)
+        for groupe in les_groupes:
+            embed.add_field(name="Groupe", value=groupe.no, inline=False)
+            for i, horaire in enumerate(groupe.horaires):
+                horaire_str = f"{horaire.jour} de {horaire.heure} au {horaire.lieu}"
+                embed.add_field(name=f"Horaire {i}", value=horaire_str, inline=True)
     else:
         LOGGER.warning('Bad URL for %s %s for course %s at\n%s', session, annee, sigle, cours.url)
         raise NoResult(NOT_AVAILABLE(sigle, session, annee))

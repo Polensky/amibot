@@ -26,9 +26,9 @@ def fetch_horaire():
     session -- a Session enum
     annee   -- which year to fetch the schedule
     """
-    #url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f?owa_sigle=INF1010&owa_anses=20203&owa_type=C&owa_apercu=N&owa_type_rech=D&owa_valeur_rech=1800'
+    url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f?owa_sigle=INF1010&owa_anses=20203&owa_type=C&owa_apercu=N&owa_type_rech=D&owa_valeur_rech=1800'
     #url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f?owa_sigle=ADM1016&owa_anses=20201&owa_type=C&owa_apercu=N'
-    url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f?owa_sigle=sif1040&owa_anses=20201'
+    #url = f'https://oraprdnt.uqtr.uquebec.ca/pls/public/actw001f?owa_sigle=sif1040&owa_anses=20201'
     res = requests.get(url)
 
     soup = BeautifulSoup(res.text, "html.parser")
@@ -60,8 +60,6 @@ def fetch_horaire():
             if h not in horaire_court:
                 horaire_court.append(h)
                 horaire.append(Horaire(h[0], h[1], h[2]))
-
-        #horaire = [Horaire(h[0], h[1], h[2]) for h in horaire_court]
 
         g_list.append(Groupe(i, horaire))
 
