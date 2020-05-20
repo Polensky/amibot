@@ -11,12 +11,10 @@ import matplotlib.pyplot as plt
 import discord
 from bs4 import BeautifulSoup
 import pandas as pd
+from typing import List
 from bot_exception import NoResult, WrongArgument
 sys.path.insert(0, '..')
 
-
-# TODO eviter que sa casse pour des cours comme SIF1040, PIF1005
-# TODO gerer les cours avec plusieurs groupes (ex.: ADM1016 hiv 2020)
 
 LOGGER = logging.getLogger('sigle_logger')
 NOTHING_FOUND_MSG = 'Sigle absent de la banque de cours'
@@ -38,7 +36,7 @@ class Session(Enum):
             ses_enum = cls.HIVER
         elif session == 'été':
             ses_enum = cls.ETE
-        elif session == 'auomne':
+        elif session == 'automne':
             ses_enum = cls.AUTOMNE
         return ses_enum
 
@@ -46,6 +44,25 @@ class Session(Enum):
         if self == Session.ETE:
             return "été"
         return self.name.lower() # pylint: disable=no-member
+
+
+class Horaire:
+    """
+    Objet représentant l'horaire d'un groupe
+    """
+    def __init__(self, jour: str, heure: str, lieu: str):
+        self.jour = jour
+        self.heure = heure
+        self.lieu = lieu
+
+
+class Groupe:
+    """
+    Objet représentant un groupe dans un cours
+    """
+    def __init__(self, no: int, horaires: List[Horaire]):
+        self.no = no
+        self.horaires = horaires
 
 
 class Cours:
@@ -63,6 +80,7 @@ class Cours:
         self.session = None
         self.annee = None
         self.professor = None
+        self.groupes = []
 
     def fetch_description(self) -> bool:
         """Fetches the course description and sets appropriate attributes.
@@ -99,7 +117,7 @@ class Cours:
         return True
 
 
-    def fetch_horaire(self, session: Session, annee: str):
+    def fetch_horaire(self, session: Session, annee: str) -> List[Groupe]:
         """Fetches the course schedule.
         session -- a Session enum
         annee   -- which year to fetch the schedule
@@ -111,7 +129,6 @@ class Cours:
         soup = BeautifulSoup(res.text, "html.parser")
 
         soup_info = soup.find('td', {'class': 'horaireinfo'})
-        soup_horaire = soup.find('td', {'class': 'horairedates'})
         if not soup_info:
             return False
 
@@ -123,23 +140,40 @@ class Cours:
         professor = re.sub('\xa0', '', professor.text)
         self.professor = re.sub('\\n', '', professor).strip()
 
-        soup_horaire.find('body')
-        horaires = soup_horaire.find_all('tr')
-        les_horaires = None
-        if len(horaires) > 2:
-            pass # treat all row
-        else:
-            jour = soup_horaire.find('strong').text
+        soup_groupe = soup.find_all('table', {'class': 'dateshoraire'})
 
-            heure = soup_horaire.find('td', {'class': 'heure'})
-            heure = re.sub('\xa0', '', heure.text)
-            heure = re.sub('\\n', '', heure)
+        g_list = []
 
-            lieu = soup_horaire.find('td', {'class': 'heure'}).find_next().text
-            lieu = lieu.strip()
+        for i, s_group in enumerate(soup_groupe):
+            horaire_tuple = []
 
-            les_horaires = [(jour, heure, lieu)]
-        return les_horaires
+            soup_horaire = s_group.find_all('tr')[1:]
+            for s_horaire in soup_horaire:
+                jour_str = s_horaire.find('td').text.split()
+                if (jour := jour_str[0]) == "Du":
+                    jour = jour_str[1]
+
+                heure = s_horaire.find('td', {'class': 'heure'})
+                heure = re.sub('\xa0', '', heure.text)
+                heure = re.sub('\\n', '', heure)
+
+                lieu = s_horaire.find('td', {'class': 'heure'}).find_next().text
+                lieu = lieu.strip()
+
+                horaire_tuple.append((jour, heure, lieu))
+
+            horaire_court = []
+            horaire = []
+            for h in horaire_tuple:
+                if h not in horaire_court:
+                    horaire_court.append(h)
+                    horaire.append(Horaire(h[0], h[1], h[2]))
+
+            g_list.append(Groupe(i, horaire))
+
+        self.groupes = g_list
+
+        return True
 
     def horaire_cours(self) -> bool:
         """Returns the schedule for the current Cours instance."""
@@ -163,19 +197,18 @@ class Cours:
         }
 
         for c in cours:
-            for h in c.horaires:
-                jour, heure, lieu = h
+            for g in c.groupes:
+                for h in g.horaires:
+                    if h.heure[0] == '8':
+                        periode = 0
+                    elif h.heure[:2] == '12':
+                        periode = 1
+                    elif h.heure[:2] == '15':
+                        periode = 2
+                    elif h.heure[:2] == '19':
+                        periode = 3
 
-                if heure[:2] == '08':
-                    periode = 0
-                elif heure[:2] == '12':
-                    periode = 1
-                elif heure[:2] == '15':
-                    periode = 2
-                elif heure[:2] == '19':
-                    periode = 3
-
-                semaine[jour][periode] += f'{c.sigle}: {lieu}\n'
+                    semaine[h.jour][periode] += f'{c.sigle}(GR{g.no}): {h.lieu}\n'
 
         dc = pd.DataFrame(semaine)
 
@@ -233,20 +266,18 @@ def my_embed_horaire(sigle: str, session: str, annee: str) -> discord.Embed:
         raise WrongArgument(WRONG_SESSION(session))
 
     cours = Cours(sigle)
-    if les_horaires := cours.fetch_horaire(sess_enum, annee):
+    if cours.fetch_horaire(sess_enum, annee):
         embed = discord.Embed(
             title=cours.titre,
             description=cours.professor,
             url=cours.url,
             color=0x006534
         )
-        if len(les_horaires) > 1:
-            pass
-        else:
-            jour, heure, lieu = les_horaires[0]
-            horaire_str = jour + ' de ' + heure
-            embed.add_field(name="Horaire", value=horaire_str, inline=True)
-            embed.add_field(name="Lieu", value=lieu, inline=True)
+        for groupe in cours.groupes:
+            embed.add_field(name="Groupe", value=groupe.no, inline=False)
+            for i, horaire in enumerate(groupe.horaires):
+                horaire_str = f"{horaire.jour} de {horaire.heure} au {horaire.lieu}"
+                embed.add_field(name=f"Horaire {i}", value=horaire_str, inline=True)
     else:
         LOGGER.warning('Bad URL for %s %s for course %s at\n%s', session, annee, sigle, cours.url)
         raise NoResult(NOT_AVAILABLE(sigle, session, annee))
