@@ -16,8 +16,6 @@ from bot_exception import NoResult, WrongArgument
 sys.path.insert(0, '..')
 
 
-# TODO eviter que sa casse pour PIF1005 (chercher les journées plutôt que "du")
-
 LOGGER = logging.getLogger('sigle_logger')
 NOTHING_FOUND_MSG = 'Sigle absent de la banque de cours'
 WRONG_SESSION = lambda session: f'`{session}` n\'est pas une session valide.' \
@@ -151,7 +149,9 @@ class Cours:
 
             soup_horaire = s_group.find_all('tr')[1:]
             for s_horaire in soup_horaire:
-                jour = s_horaire.find('td').text.split()[0]
+                jour_str = s_horaire.find('td').text.split()
+                if (jour := jour_str[0]) == "Du":
+                    jour = jour_str[1]
 
                 heure = s_horaire.find('td', {'class': 'heure'})
                 heure = re.sub('\xa0', '', heure.text)
