@@ -16,8 +16,7 @@ from bot_exception import NoResult, WrongArgument
 sys.path.insert(0, '..')
 
 
-# TODO eviter que sa casse pour des cours comme SIF1040, PIF1005
-# TODO gerer les cours avec plusieurs groupes (ex.: ADM1016 hiv 2020)
+# TODO eviter que sa casse pour PIF1005 (chercher les journées plutôt que "du")
 
 LOGGER = logging.getLogger('sigle_logger')
 NOTHING_FOUND_MSG = 'Sigle absent de la banque de cours'
