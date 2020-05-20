@@ -39,7 +39,7 @@ class Session(Enum):
             ses_enum = cls.HIVER
         elif session == 'été':
             ses_enum = cls.ETE
-        elif session == 'auomne':
+        elif session == 'automne':
             ses_enum = cls.AUTOMNE
         return ses_enum
 
@@ -83,7 +83,7 @@ class Cours:
         self.session = None
         self.annee = None
         self.professor = None
-        self.groupes = List[Groupe]
+        self.groupes = []
 
     def fetch_description(self) -> bool:
         """Fetches the course description and sets appropriate attributes.
@@ -132,7 +132,6 @@ class Cours:
         soup = BeautifulSoup(res.text, "html.parser")
 
         soup_info = soup.find('td', {'class': 'horaireinfo'})
-        #soup_horaire = soup.find('td', {'class': 'horairedates'})
         if not soup_info:
             return False
 
@@ -173,7 +172,9 @@ class Cours:
 
             g_list.append(Groupe(i, horaire))
 
-        return g_list
+        self.groupes = g_list
+
+        return True
 
     def horaire_cours(self) -> bool:
         """Returns the schedule for the current Cours instance."""
@@ -197,19 +198,18 @@ class Cours:
         }
 
         for c in cours:
-            for h in c.horaires:
-                jour, heure, lieu = h
+            for g in c.groupes:
+                for h in g.horaires:
+                    if h.heure[0] == '8':
+                        periode = 0
+                    elif h.heure[:2] == '12':
+                        periode = 1
+                    elif h.heure[:2] == '15':
+                        periode = 2
+                    elif h.heure[:2] == '19':
+                        periode = 3
 
-                if heure[:2] == '08':
-                    periode = 0
-                elif heure[:2] == '12':
-                    periode = 1
-                elif heure[:2] == '15':
-                    periode = 2
-                elif heure[:2] == '19':
-                    periode = 3
-
-                semaine[jour][periode] += f'{c.sigle}: {lieu}\n'
+                    semaine[h.jour][periode] += f'{c.sigle}(GR{g.no}): {h.lieu}\n'
 
         dc = pd.DataFrame(semaine)
 
@@ -257,7 +257,7 @@ def my_embed_desciption(sigle: str) -> discord.Embed:
             )
     return embed
 
-def my_embed_horaire(sigle: str, session: str, annee: str) -> List[discord.Embed]:
+def my_embed_horaire(sigle: str, session: str, annee: str) -> discord.Embed:
     """Return an embed schedule of a course"""
     if not annee:
         annee = str(datetime.datetime.now().year)
@@ -267,14 +267,14 @@ def my_embed_horaire(sigle: str, session: str, annee: str) -> List[discord.Embed
         raise WrongArgument(WRONG_SESSION(session))
 
     cours = Cours(sigle)
-    if les_groupes := cours.fetch_horaire(sess_enum, annee):
+    if cours.fetch_horaire(sess_enum, annee):
         embed = discord.Embed(
             title=cours.titre,
             description=cours.professor,
             url=cours.url,
             color=0x006534
         )
-        for groupe in les_groupes:
+        for groupe in cours.groupes:
             embed.add_field(name="Groupe", value=groupe.no, inline=False)
             for i, horaire in enumerate(groupe.horaires):
                 horaire_str = f"{horaire.jour} de {horaire.heure} au {horaire.lieu}"
