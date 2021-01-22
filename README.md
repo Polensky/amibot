@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="45%" src="amibot.png" alt="Banner">
+  <img width="35%" src="amibot.png" alt="Banner">
 </p>
 <p align="center">
   <b font-size="larger">AMIBOT</b>
@@ -19,16 +19,16 @@ Fonctionnalités:
 3. Générer un horaire à partir d'une liste de cours(sigle).
 
 ## Comment le rouler
-# Prérequis
+### Prérequis
 - Avoir une version de python 3.8 d'installer sur votre système;
-- avoir[pipenv](https://pipenv.pypa.io/en/latest/) d'installer sur votre sytème;
+- avoir [pipenv](https://pipenv.pypa.io/en/latest/) d'installer sur votre sytème;
 - obtenir un jeton discord pour tester le bot ([tutoriel pour ajouter un bot discord](https://medium.com/simple-guides-to-technology/a-simple-guide-to-making-a-discord-bot-using-python-1e4738f2cdd0));
 - créer un fichier `.env` à la racine du projet ayant comme contenu:
 ```
 DISCORD_TOKEN=ton_jeton_discord_ici
 ```
 
-# Démarrer le bot
+### Démarrer le bot
 Pour le premier démarrage assurez-vous d'avoir exécuter cette commande avant:
 ``` sh
 pipenv install
