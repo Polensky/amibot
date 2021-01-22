@@ -1,6 +1,5 @@
-![amibot logo](amibot.png)
 <p align="center">
-  <img width="75%" src="amibot.png" alt="Banner">
+  <img width="45%" src="amibot.png" alt="Banner">
 </p>
 <p align="center">
   <b font-size="larger">AMIBOT</b>
