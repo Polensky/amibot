@@ -156,7 +156,11 @@ async def todo(ctx):
 
     for py in py_files:
         with open(py, 'r') as f:
-            todos = [f'line {i}: {t[0]}' for i, line in enumerate(f.readlines()) if (t := re.findall(r'^(?:\s+)?#(?:\s+)?TODO\s+(.*)$', line))] # pylint: disable=line-too-long,superfluous-parens
+            todos = [
+                f'line {i}: {t[0]}'
+                for i, line in enumerate(f.readlines())
+                if (t := re.findall(r'^(?:\s+)?#(?:\s+)?TODO\s+(.*)$', line))
+            ]
 
             if todos:
                 embed = discord.Embed(
