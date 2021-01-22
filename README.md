@@ -1,4 +1,15 @@
-# **amibot**
+![amibot logo](amibot.png)
+<p align="center">
+  <img width="75%" src="amibot.png" alt="Banner">
+</p>
+<p align="center">
+  <b font-size="larger">AMIBOT</b>
+</p>
+<p align="center">
+  <b>Robot Discord pour le serveur de l'AMI.</b>
+</p>
+
+## À propos
 Un robot discord à multiple usage pour le serveur discord de l'association
 des étuidants en mathématiques et informatique de l'université du Québec à 
 Trois-Rivières.
