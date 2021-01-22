@@ -15,7 +15,7 @@ def start_logger():
 
     # Create handlers
     c_handler = logging.StreamHandler()
-    f_handler = logging.FileHandler(f'logging/amibot;{date_str}.log')
+    f_handler = logging.FileHandler(f'logging/amibot_{date_str}.log')
     c_handler.setLevel(logging.INFO)
     f_handler.setLevel(logging.WARNING)
 
