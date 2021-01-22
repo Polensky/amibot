@@ -226,7 +226,7 @@ class Cours:
         ax.patch.set_visible(False)
         fig.patch.set_visible(False)
 
-        plt.savefig('images\\horaire_img.png', bbox_inches='tight', pad_inches=0)
+        plt.savefig('horaire_img.png', bbox_inches='tight', pad_inches=0)
 
         return True
 

@@ -87,7 +87,7 @@ async def get_img_horaire(ctx, session: str, *sigles: str):
                     f'pour le cours {fail.sigle} n\'est pas encore publié.')
 
     if Cours._horaire_text_table(cours_lst): # pylint: disable=protected-access
-        await ctx.send(file=discord.File('images\\horaire_img.png'))
+        await ctx.send(file=discord.File('horaire_img.png'))
     else:
         LOGGER.error('Image generation failed.')
         await ctx.send(f'Il y a eu un problème dans la génération d\'image')
