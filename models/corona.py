@@ -12,7 +12,7 @@ def my_embed() -> discord.Embed:
     deaths = int(j['latest']['deaths'])
     recovered = int(j['latest']['recovered'])
     embed = discord.Embed(
-        title=f':thermometer_face: Corona update :chart_with_upwards_trens:',
+        title=f':thermometer_face: Corona update :chart_with_upwards_trend:',
         url='https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6',
         color=0x006534
     )
