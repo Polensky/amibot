@@ -4,6 +4,7 @@ Bot du discord de l'AMI
 import os # pylint: disable=no-absolute-import
 import datetime
 import re
+import json
 from random import randint
 import logging
 from os import listdir
@@ -175,6 +176,31 @@ async def todo(ctx):
 async def corona(ctx):
     """ C O R O N A """
     await ctx.send(embed=coro.my_embed())
+
+@bot.command(name='ccr')
+async def ccr(ctx):
+    if ctx.message.author.guild_permissions.administrator:
+        courses = json.load(open('out.json'))
+        category = discord.utils.get(ctx.guild.categories, name='Discussion par cours')
+        for cour in courses:
+            channel_name = f'{cour["sigle"]} {cour["name"]}'
+            channel_topic = f'Niveau: {cour["annee"]}'
+            if 'prealables' in cour:
+                channel_topic += f' Préalables: {cour["prealables"]}'
+            if category:
+                channel = await ctx.guild.create_text_channel(channel_name, topic=channel_topic, category=category)
+                embed = discord.Embed(title=cour['name'], description=cour['description'])
+                msg = await channel.send(embed=embed)
+                await msg.pin()
+
+@bot.command(name='ccrd')
+async def ccrd(ctx):
+    if ctx.message.author.guild_permissions.administrator:
+        category = discord.utils.get(ctx.guild.categories, name='Discussion par cours')
+        for chan in ctx.guild.text_channels:
+            if chan.category == category:
+                await chan.delete()
+
 
 try:
     bot.run(TOKEN)

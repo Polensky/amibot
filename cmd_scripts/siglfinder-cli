@@ -20,7 +20,7 @@ class color:
     UNDERLINE = '\033[4m'
     END = '\033[0m'
 
-sessions = {'hiv': 1, 'ete': 2, 'aut': 3} 
+sessions = {'hiv': 1, 'ete': 2, 'aut': 3}
 sessions_str = ['hiver', 'été', 'automne']
 
 parser = argparse.ArgumentParser()
@@ -30,11 +30,11 @@ parser.add_argument(
     help='Sigle du cours'
 )
 parser.add_argument(
-    '-s', '--session', 
-    metavar='ses', 
+    '-s', '--session',
+    metavar='ses',
     type=str,
     choices=sessions,
-    help=('Affiche la disponibilité du cours ' 
+    help=('Affiche la disponibilité du cours '
           'pour la session d\'hiver, d\'été ou d\'automne. '
           '(hiv, ete, aut) au lieu de la description')
 )

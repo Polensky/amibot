@@ -1,0 +1,1120 @@
+[
+  {
+    "sigle": "ALG1001",
+    "name": "Logiques et Ensembles",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nS'initier aux concepts de base des mathématiques actuelles à travers l'étude de concepts de la logique et de la théorie des ensembles. Développer la capacité de faire des preuves.Logique propositionnelle : formes propositionnelles et connecteurs logiques, dérivations et méthodes de preuves. Logique des prédicats : quantificateurs et raisonnements avec ceux-ci. Concepts ensemblistes : approche intuitive et approche axiomatique des ensembles, axiome des naturels et preuve par induction mathématique. Relations, relations d'ordre, relations d'équivalence. Fonctions et applications.\n"
+  },
+  {
+    "sigle": "ALG1003",
+    "name": "Applications algébriques",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nA partir de problèmes, développer et appliquer des concepts et des outils mathématiques pour modéliser et résoudre ces problèmes. Utiliser les grandes techniques mathématiques : l'abstraction, la généralisation, l'induction mathématique, les structures et ses isomorphismes, les ensembles-quotient pour solutionner des problèmes concrets. Explorer les liens entre différents domaines mathématiques tels l'algèbre et la logique, l'analyse, l'informatique...\nRéseaux logiques et algèbre de Boole. Automates déterministes, réduction d'automates et automates non-déterministes. Problèmes de codage. Problèmes et thèmes choisis en théorie des nombres, des ensembles flous, des corps, en combinatoire...\n\n",
+    "prealables": [
+      [
+        "MPU1015"
+      ]
+    ]
+  },
+  {
+    "sigle": "ASY1006",
+    "name": "Introduction au génie logiciel",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nIntroduire l'étudiant à certains concepts de base du génie logiciel, en général, et de l'assurance qualité, en particulier, et le sensibiliser à leur importance dans la production de logiciels de qualité. Le cours se veut surtout une introduction générale à ce domaine. L'étudiant est appelé à appliquer une partie importante des connaissances acquises dans le cadre de la réalisation d'un projet de session.\nObjectifs du génie logiciel. Processus de développement d'un produit logiciel - principales étapes. Modèles de cycles de vie. Processus génie logiciel. Objectifs de l'assurance qualité logicielle et principales techniques. Vérification et validation dans le processus de développement : principes et objectifs. Processus de test : techniques de conception des tests. Introduction aux concepts fondamentaux de la qualité logicielle. Introduction à la gestion de projets informatiques : grandes lignes. Documentation. Activités de maintenance. Réalisation d'un projet.\n\n",
+    "prealables": [
+      [
+        "INF1004",
+        "INF1023",
+        "INF1024"
+      ]
+    ]
+  },
+  {
+    "sigle": "ASY1009",
+    "name": "Outils de développement Web",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nInitier l'étudiant à la création et à la publication de documents Web; rendre l'étudiant apte à utiliser des produits commerciaux de création de sites Web.\nInitiation à l'Internet et au Web; introduction au langage HTML. Etapes de la conception d'un site Web; publication d'un site Web, utilisations de types différents d'outils de conception de site Web : éditeur de pages HTML (tels que webExpert, Netscape Composer, EditPlus, HomeSite...); éditeur de sites Web (tels que Dream Weaver (Macromedia), Golive (Adobe), FrontPage (Microsoft)...); éditeur d'images sous format « bitmap » ou vectoriel (tels que Photoshop Elements (Adobe), Fireworks (Macromedia), Freehand (Macromedia)...); logiciel de création d'animation (tels que Flash (Macromedia), LiveMotion (Adobe)...).\nEnvironnement : Les logiciels de chaque type d'outils qui seront utilisés seront annoncés lorsque le cours sera mis à l'horaire.\n\n"
+  },
+  {
+    "sigle": "EMA1010",
+    "name": "Évolution des concepts mathématiques et enseignement",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nÉtudier l'évolution historique de notions mathématiques et leurs applications reliées à l'enseignement secondaire. Réfléchir sur l'utilisation de l'histoire des mathématiques à des fins pédagogiques.Période préhistorique. Civilisations babylonienne et égyptienne. Civilisation grecque. Civilisations chinoise, hindoue, arabe. La mathématique européenne au Moyen Âge et à la Renaissance. Début de la mathématique moderne. Les mathématiques du XVIIe siècle.\n",
+    "prealables": [
+      [
+        "GEM1001",
+        "GEM1003"
+      ],
+      [
+        "MPU1015"
+      ]
+    ]
+  },
+  {
+    "sigle": "EMA1011",
+    "name": "Géométrie analytique",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nApprofondir certaines notions mathématiques relatives à la géométrie analytique du plan. Se familiariser avec les différents systèmes de coordonnées et être capable de classifier certaines courbes et surfaces. Dégager certaines stratégies pour l'enseignement des concepts étudiés. S'initier à certains logiciels outils de simulation de situations graphiques dans un plan cartésien et dans l'espace 3D.\nEquations et fonctions : Théorie des équations: 1er et 2e degrés (droites et coniques). Fonctions exponentielles, logarithmiques et trigonométriques.\nCourbes et surfaces : Coordonnées cartésiennes, polaires, cylindriques et sphériques; courbes et surfaces classiques (coniques, cardioïde, lemniscate, sphère, paraboloïde, ellipsoïde, etc.), asymptotes.\n\n"
+  },
+  {
+    "sigle": "GEM1001",
+    "name": "Géométries euclidienne et non euclidienne",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nS'initier à l'approche moderne des mathématiques par l'étude axiomatique de géométries.Systèmes axiomatiques de géométries. Géométries finies. Géométrie neutre (ou absolue), géométrie euclidienne et géométrie hyperbolique, initiation à la géométrie elliptique. Les automorphismes de la géométrie : les isométries et les homothéties.\n",
+    "prealables": [
+      [
+        "MPU1015"
+      ]
+    ]
+  },
+  {
+    "sigle": "GEM1002",
+    "name": "Transformations géométriques",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nApprofondir certains concepts fondamentaux de la géométrie, notamment les différentes transformations géométriques utilisées dans l'enseignement.\nÉtude des transformations géométriques du plan: isométries, symétries, translations, rotations et de leurs invariants. Construction des réels à partir de la graduation d'une droite. Théorème de Thalès et homothéties. Aspect algébrique des transformations: plan vectoriel, transformations orthogonales, similitudes. Corps des complexes. Constructions géométriques.\n\n",
+    "prealables": [
+      [
+        "GEM1001",
+        "GEM1003"
+      ]
+    ]
+  },
+  {
+    "sigle": "GEM1003",
+    "name": "Géométrie euclidienne",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nS'initier à l'approche axiomatique par l'étude de la géométrie euclidienne.  Approfondir certains concepts géométriques enseignés au secondaire.  Affiner son habileté à prouver.Théories déductives et axiomatiques.  Géométrie euclidienne du plan.  Propriétés des droites, triangles, cercles, etc.  Relations métriques.  Constructions géométriques.  Géométrie dans l'espace.  Polyèdres et corps ronds.  Introduction à la géométrie de l'inversion.\n"
+  },
+  {
+    "sigle": "GIF1003",
+    "name": "Réseaux, télématique et technologies informatiques",
+    "cycle": 1,
+    "annee": "Deuxième-troisième année",
+    "description": "\nConnaître et appliquer les différents concepts reliés aux nouvelles technologies de l'information et des communications. Fournir les bases de fonctionnement des réseaux: architecture en couches et protocoles. Présenter les aspects liés à la communication des réseaux locaux, les concepts du réseau Internet et le modèle client/server. Se familiariser avec les concepts de la sécurité et leurs impacts sur les nouvelles technologies informatiques.\n"
+  },
+  {
+    "sigle": "GMA1001",
+    "name": "Stages",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nAcquérir une expérience pratique du travail de statisticien, de professeur ou d'informaticien dans une entreprise utilisant les statistiques et/ou l'informatique, ou dans une maison d'enseignement. Faciliter l'intégration dans le milieu de travail.\nL'étudiant présente un projet soumis à approbation. Ce projet devra préciser l'équipe, le groupe ou l'entreprise dont les activités principales correspondent aux statistiques et/ou à l'informatique et/ou à l'enseignement, et ceci pour une durée minimale de 135 heures d'activités d'ordre technique. A la fin de son stage, l'étudiant doit soumettre un rapport de stage. Le stage sera sous la supervision d'un professeur du Département de mathématiques et d'informatique.\nRèglement pédagogique particulier :\nPour les étudiants inscrits au baccalauréat en mathématiques (7721) : Avoir complété au moins 60 crédits du programme et avoir au moins 2,5 de moyenne cumulative.\nPour les étudiants inscrits au double bacc : mathématiques et enseignement au secondaire - mathématiques (6721) : Avoir complété au moins 75 crédits du programme et avoir au moins 2,5 de moyenne cumulative.\nPour les étudiants inscrits au double bacc : mathématiques et informatique (6833) : Avoir complété au moins 75 crédits du programme.\n\n"
+  },
+  {
+    "sigle": "IAR1001",
+    "name": "Intelligence artificielle",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nL'objectif principal de ce cours est d'apprendre les concepts de base de l'intelligence artificielle (IA) et, en particulier, ses aspects informatiques et mathématiques. L'étudiant devra être en mesure d'identifier les problèmes qui relèvent de l'IA, de sélectionner les techniques ou approches pertinentes et de les mettre en application de façon efficiente. Les techniques de représentation des connaissances (structures de données) et de recherche (algorithmes), ainsi que leur réalisation informatique, de même que certains domaines d'application, constituent la matière fondamentale de ce cours. Plus spécifiquement, la matière sera présentée principalement dans la perspective des agents intelligents, et, de façon complémentaire, dans le contexte des systèmes multiagents et de l'intelligence artificielle distribuée.Le cours fait le tour des aspects d'actualité de l'intelligence artificielle. Les agents \"intelligents\" servent de vecteur pour promouvoir l'explication des autres concepts de l'IA. Parmi ces concepts, nous voyons : les méthodes et stratégies de recherches de solution, les méthodes de jeux, la connaissance et le raisonnement fondés sur la logique du premier ordre et les inférences en logique du premier ordre, la planification et l'action logique et, enfin, le raisonnement probabiliste avec des connaissances incertaines. Dans une deuxième partie, nous introduisons la notion d'apprentissage automatique au moyen des réseaux de neurones et le traitement des langues naturelles.\n",
+    "prealables": [
+      [
+        "STT1001",
+        "STT1003"
+      ],
+      [
+        "INF1008"
+      ],
+      [
+        "INF1004"
+      ]
+    ]
+  },
+  {
+    "sigle": "IFG1004",
+    "name": "Introduction aux bases de données avec Access",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nL'étudiant s'initiera aux bases de données inhérentes à l'informatisation d'un système d'information aux fins de gestion. Il explorera les méthodes de solutions reliées aux bases de données dans le cadre de l'analyse, de la conception et de la mise en oeuvre d'applications informatiques. Il utilisera un ou plusieurs outils de gestion de bases de données pour réaliser un projet d'application.\nEléments fondamentaux des bases de données. L'architecture d'un système de gestion de données. La modélisation du monde réel. Le modèle relationnel de représentation des données : la structure, les règles d'intégrité, l'algèbre relationnelle, le calcul relationnel. Le langage de manipulation SQL. La théorie de la normalisation : objectifs, les trois premières formes normales, la méthodologie de réalisation. Etude et utilisation de systèmes de gestion de bases de données sur micro-ordinateur.\n\n",
+    "prealables": [
+      [
+        "INF1002",
+        "PRO1025"
+      ]
+    ]
+  },
+  {
+    "sigle": "IFG1009",
+    "name": "Utilisation d'un tableur - Notions de base",
+    "cycle": 1,
+    "annee": "Cours d'appoint",
+    "description": "\nFamiliariser l'étudiant avec les commandes et les fonctions de base d'un tableur.\nParamètres de l'environnement d'un tableur, manipulation des données numériques à l'aide du tableur.\n\n"
+  },
+  {
+    "sigle": "IFG1010",
+    "name": "Initiation aux outils informatiques",
+    "cycle": 1,
+    "annee": "Cours d'appoint",
+    "description": "\nCe cours vise à initier l'étudiant à l'utilisation des ordinateurs, à leur système d'exploitation et à certains logiciels d'usage courant (traitement de texte, tableur et conception de présentations). A la fin du cours, l'étudiant devrait être en mesure d'utiliser un ordinateur pour rédiger un texte, créer une feuille de calcul, préparer une présentation, naviguer et faire des transactions sur Internet, utiliser des outils de recherche d'information, télécharger des fichiers et correspondre par courrier électronique. L'étudiant sera initié aux outils informatiques propres à l'UQTR.\n"
+  },
+  {
+    "sigle": "INF1001",
+    "name": "Programmation Web",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nPermettre à l'étudiant de s'initier aux concepts du Web. A travers des exemples détaillés, l'étudiant apprend à créer et à publier des sites Web en exploitant les nouvelles technologies du Web. Il se familiarise avec les langages de programmation propres au Web. \nPrincipaux éléments du Web;  langage de balisage, conception de page Web, validation, organisation et gestion d'un site Web, programmation coté client et coté serveur,  introduction à XML.  \nTechnologies : HTML, CSS, DOM,  JavaScript, php.\nCe cours utilise les langages HTML, JavaScript, VbScript, XML et l'outil de conception de pages Web EditPlus.\n\n"
+  },
+  {
+    "sigle": "INF1002",
+    "name": "Introduction à la programmation objet",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nPermettre à l'étudiant de se familiariser avec l'informatique comme discipline et surtout à la programmation impérative et orientée objet. Présentation des structures de commandes, des types, des objets, des structures de données élémentaires (tableau, chaîne de caractères); mécanismes de structuration d'applications : sous-programmes, notions de classe, d'objet, d'application; développement d'applications : choix des données et des algorithmes, codification, compilation, exécution, mise au point de classes et d'applications.\nIntroduction à l'informatique; outils de construction d'application : syntaxe et sémantique d'un langage de haut niveau; variables, types, expressions, affectation; entrée-sortie élémentaire; structures de sélection et d'itération : sous-programmes et passage de paramètres : introduction au paradigme objet : notions de classe, d'objet, d'état et de méthode, d'héritage; algorithmes et résolution de problèmes (problem-solving) : stratégies de solution de problèmes, rôles de l'algorithme dans la résolution de problèmes; stratégies d'implantation; structure de données de base : tableaux, chaînes de caractères; stratégie de vérification : conception de points-tests.\nCe cours utilise le langage de programmation Java sur la plate-forme Eclipse. Il comporte 18 heures d'atelier.\n\n"
+  },
+  {
+    "sigle": "INF1003",
+    "name": "Introduction aux interfaces utilisateur",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nAmener l'étudiant à comprendre le comportement humain dans son interaction avec un environnement logiciel interactif, à développer une interface utilisateur simple et à évaluer l'ergonomie d'un logiciel interactif.\nConcepts de base de l'ergonomie du logiciel et des interactions personne-machine : modèles, principes et lignes directrices; introduction à la conception d'interfaces utilisateur : processus, outils, méthodologie et normes; outils de développement d'interfaces graphiques : utilisation des contrôles et des objets prédéfinis, propriétés, méthodes et gestion des événements; évaluation des interfaces : test, enquête et expérimentation. \nCe cours comporte des exercices en Java. \n\n",
+    "prealables": [
+      [
+        "INF1002"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1004",
+    "name": "Structures de données et algorithmes",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nPermettre à l'étudiant de se familiariser avec les structures de données classiques et les algorithmes qui leur sont associés; réaliser des implantations statiques et dynamiques de ces structures : faire l'évaluation de la complexité spatiale et temporelle dans les cas simples; étudier la récursion et la comparer avec l'itération.\nRevue des concepts élémentaires de programmation; bases de la programmation Objet: encapsulation, dissimulation de l'information; séparation du comportement et de l'implantation; héritage et polymorphisme; conception par héritage et par composition; utilisation de fichiers; les principales structures de données: liste, pile, file, table d'adressage dispersé, arbre, graphe; implantation statique et dynamique; les algorithmes de fouille, de tri, les fonctions de hachage et les stratégies de traitement des collisions, parcours d'arbres et de graphes; le concept de récursion : les fonctions mathématiques récursives; comparaison avec les fonctions itératives correspondantes; implantation de récursion à l'aide de piles; analyse élémentaire de la complexité des algorithmes: complexité spatiale et complexité temporelle; notation \"grand O\", comportement du meilleur cas, du cas moyen et du pire cas; principales classes de complexité d'algorithmes; stratégies de test pour les classes et les applications.\nCe cours utilise le langage de programmation Java et la plateforme Eclipse.\n\n",
+    "prealables": [
+      [
+        "INF1002"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1005",
+    "name": "Concepts avancés en objet",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nAmener l'étudiant à comprendre les mécanismes du développement orienté-objet. Approfondir les notions de la programmation orientée-objet. Utiliser un environnement de développement (IDE). Utiliser le paradigme de programmation événementielle.\nIntroduction au langage C++. Etude des notions importantes de la programmation orientée-objet : héritage, hiérarchie de classes, polymorphisme, classes abstraites, programmation générique, visibilité. Notions de robustesse et de sécurité dans les applications. Programmation événementielle : événements, messages, gestion des exceptions.\nLes langages utilisés dans ce cours sont C++ et Java (à titre comparatif). L'environnement de développement est Visual C++. Le cours comporte 18 heures d'atelier.\n\n",
+    "prealables": [
+      [
+        "INF1004"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1006",
+    "name": "Analyse et modélisation",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nFamiliariser l'étudiant avec le processus de développement de systèmes informatiques, et plus particulièrement avec les phases initiales. L'initier à l'exercice de l'analyse des besoins, à la spécification et à la modélisation des systèmes ainsi qu'à l'évaluation de ces étapes. Explorer les fondements et l'évolution des méthodes d'analyse.\nProcessus de développement et activités initiales: analyse des besoins et spécifications; importance de l'analyse dans le processus de développement; étude détaillée et application d'une méthode (UML); différentes étapes du processus: analyse des besoins, formalisation et validation; analyse et modélisation orientées objet; outils GLAO (CASE) de modélisation; dossier des spécifications et des exigences d'un logiciel; normes, critères de qualité de la spécification; revue technique; réalisation d'un dossier de spécifications.\nLe cours comporte 12 heures d'atelier.\n\n",
+    "prealables": [
+      [
+        "INF1004"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1007",
+    "name": "Conception de logiciels",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nInitier l'étudiant au processus de conception et le sensibiliser à ses difficultés et à son importance. Procéder à l'étude détaillée et à l'application d'une méthode. Permettre à l'étudiant d'élaborer des solutions de qualité.\nProblématique du processus de conception. Importance de la conception dans le processus de développement. Processus de conception : principes, méthode et notation. Étude détaillée et application d'une méthode. Différentes étapes du processus. Conception et styles d'architectures logicielles. Patrons de conception (GRASP). Qualité de la conception : élaboration de solutions réutilisables, maintenables, extensibles, etc. Conception orientée objet. Caractéristiques d'une bonne conception détaillée (modularité, abstraction, cohésion, couplage, etc.). Outils d'aide à la conception. Documentation de la conception. Revue de la conception. Réalisation d'un projet.\n\n",
+    "prealables": [
+      [
+        "INF1006"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1008",
+    "name": "Analyse et conception d'algorithmes",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nL'étudiant développera son habileté à produire des algorithmes corrects et efficaces. Il pourra analyser la complexité spatiale et temporelle d'un algorithme. Il entrera en contact avec différentes classes d'algorithmes et s'habituera à choisir le type d'algorithme qui convient le mieux à un problème donné.Définition d'un algorithme et de sa complexité. Notations asymptotiques. Résolution de récurrence. Étude d'efficacité et de complexité d'algorithmes de tri. Stratégies de conception d'algorithmes : algorithmes voraces, diviser-pour-régner, programmation dynamique, algorithmes probabilistes, exploration de graphes. Études de cas.\n",
+    "prealables": [
+      [
+        "ALG1001",
+        "PIF1005"
+      ],
+      [
+        "INF1004"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1009",
+    "name": "Réseaux d'ordinateurs I",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nLe but du cours est de fournir les bases indispensables à la compréhension des architectures des réseaux informatiques qui permettent l'échange des données entre ordinateurs. Il précise le fonctionnement des réseaux : architecture en couches, protocoles.\nÉtant donné que la connaissance du domaine est compliquée par la richesse du vocabulaire, on présente progressivement les notions et le vocabulaire à l'aide d'exemples simples. Une première partie présente les aspects liés à la transmission des informations : circuits de données, protocoles de liaison, réseaux à circuits virtuels. Une fois les principes présentés, on détaille le formalisme des sept couches OSI : concepts, description du modèle. Une troisième partie est consacrée aux réseaux locaux (Ethernet, Token Ring, Sans fil). Finalement, on explique les principes des réseaux IP.\n\n",
+    "prealables": [
+      [
+        "SIF1015"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1010",
+    "name": "Réseaux d'ordinateurs II",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nCe cours permet aux étudiants de se familiariser avec les concepts et les contraintes des nouvelles technologies de l'information et des communications.\nPrésentation des spécificités du réseau Internet : services, protocoles, applications, administration; introduction à la gestion sécurisée de l'information et aux techniques et mécanismes de sécurité informatique.\nCe cours offre la possibilité aux étudiants de définir, de spécifier et de réaliser des applications clients serveurs sur le réseau Internet et de faire de l'administration de quelques services TCP/IP (DHCP, DNS,…) et des outils réseaux (Switch, routeur,..).\n\n",
+    "prealables": [
+      [
+        "INF1009"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1011",
+    "name": "Génie logiciel",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nFamiliariser l'étudiant avec les concepts et principes fondamentaux du génie logiciel et le sensibiliser à leur importance dans la production de logiciels de qualité. Amener l'étudiant à une compréhension des principes de base de l'assurance qualité.\nPrincipes et concepts fondamentaux du Génie Logiciel. Produit logiciel: caractéristiques. Processus de génie logiciel. Modèles de cycle de vie. Prototypage. Normes. Maturité des processus. Processus léger. Méthodes Agiles. Réutilisation de logiciel. Concepts favorisant la réutilisation - Pattern, COO,  paradigme aspect. Entités réutilisable - lignes de produits logiciels, composants, produits COTS. Assurance qualité logiciel : Principes et Techniques. Processus de validation et de vérification : définition, rôles, techniques, impact sur la qualité, etc. Processus de test : techniques et stratégies. Planification, conception et réalisation des tests. Techniques de revues, Preuves, etc. Concepts et principes de la qualité. Contrôle de la qualité : qualité et métriques. Gestion de projets. Maintenance. Réingénierie. Documentation technique.\n\n",
+    "prealables": [
+      [
+        "INF1007"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1012",
+    "name": "Élaboration et gestion de projets scientifiques",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nIdentifier et analyser les conséquences de l'innovation technologique et de la recherche et développement en sciences. Acquérir des connaissances et des techniques de travail en situation de projets informatiques. Développer l'aptitude à planifier de tels projets, à y participer et, éventuellement, à les gérer. Développer l'habileté à gérer son temps et celui de ses collaborateurs. Se familiariser à la dimension internationale de la gestion des projets.Les différentes formes d'innovation technologique. Évaluation des impacts positifs et négatifs de l'innovation technologique et de la recherche et développement en sciences : étude coût/bénéfice, impact sur les individus, la communauté scientifique et la société. Gestion de projets informatiques : identification des objectifs et définition du projet, élaboration de solutions à caractère scientifique, planification des activités, échéanciers; choix de l'équipe, attribution des responsabilités; importance de la coordination en environnement de projet; suivi des activités et gestion du temps; progiciels de gestion de projets.\n",
+    "prealables": [
+      [
+        "INF1011"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1013",
+    "name": "Environnement de développement et composantes logicielles",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nCompléter la formation des étudiants en lien avec les méthodologies et technologies de développement des applications Frame/Web d'envergure. Apprendre à construire des composants réutilisables en s'appuyant sur des bibliothèques existantes. Réaliser les applications Web et Frame selon les modèles MVC/MVP ainsi que des Application Serveur sous forme d'APE RESTFUL. Utiliser et configurer des environnements de développement pour de grands projets logiciels. Maîtriser les gestionnaires de dépendances de projets. Open Source/Propriétaires. Quelques-unes des technologies importantes seront utilisées : C# - ASP.Net, Java-JSP, Python-DJANGO, Ruby-Rails, GWT, ANGULAR, REACT, Maven, Gradle, etc.\n",
+    "prealables": [
+      [
+        "INF1005",
+        "INF1035"
+      ],
+      [
+        "SIF1015"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1014",
+    "name": "Aspects juridiques de l'informatique",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nL'étudiant se familiarise avec les aspects juridiques de l'informatique. Il apprend à connaître les principales lois touchant la pratique de l'informatique. Il développe l'habileté à analyser des situations de travail de façon à éviter les problèmes juridiques.\nNotions juridiques : juridiction et territorialité, droit civil et droit pénal. Principales lois touchant la pratique de l'informatique : le droit d'auteur, le respect de la vie privée dans les secteurs public et privé, l'accès à l'information, le cadre juridique des technologies de l'information. Les aspects légaux des licences de produits informatiques. Les aspects légaux particuliers à l'Internet.\nRèglements pédagogiques particuliers : Pour s'inscrire aux cours TIN1003 Science, technologie et société et INF1014 Aspects juridiques de l'informatique, l'étudiant en informatique doit avoir complété 60 crédits dans le programme.\rPour s'inscrire à ce cours, l'étudiant inscrit au double baccalauréat en mathématiques et en informatique ou au double baccalauréat en physique et en informatique doit avoir complété 90 crédits dans le programme.  \n"
+  },
+  {
+    "sigle": "INF1015",
+    "name": "Stage d'informatique I",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nL'objectif du cours Stage d'informatique I est de permettre à l'étudiant d'appliquer ses connaissances en informatique en milieu de travail.\nLa durée normale du stage est de 12 à 16 semaines à temps plein.\nRèglement pédagogique particulier : Pour s'inscrire au cours INF1015 Stage d'informatique I, l'étudiant doit avoir réussi obligatoirement 45 crédits du programme.\n\n"
+  },
+  {
+    "sigle": "INF1016",
+    "name": "Stage d'informatique II",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nLes objectifs du cours Stage d'informatique II sont de permettre à l'étudiant d'appliquer ses connaissances en informatique en milieu de travail et de parfaire l'acquisition des méthodes de travail propres à l'informatique.\nLa durée normale du stage est de 12 à 16 semaines à temps plein.\nRèglement pédagogique particulier : Pour s'inscrire au cours INF1016 Stage d'informatique II, l'étudiant en informatique doit avoir réussi obligatoirement 60 crédits du programme et le cours  INF1015 Stage d'informatique I.\rPour s'inscrire au cours INF1016 Stage d'informatique II, l'étudiant inscrit au double baccalauréat en mathématiques et en informatique ou au double baccalauréat en physique et en informatique doit avoir réussi obligatoirement 90 crédits du programme et le cours GMA1001 Stages.\n\n"
+  },
+  {
+    "sigle": "INF1017",
+    "name": "Gestion de parcs d'ordinateurs",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nFamiliariser l'étudiant aux méthodes de gestion de parcs d'ordinateurs et à la gestion courante d'un système informatique : installation et gestion des serveurs, des périphériques, des comptes usagers. Gestion de réseaux, gestion de la mémoire. Gestion des incidents, des licences, de la sécurité. Gestion du câblage. Optimisation des performances.Installation de systèmes d'exploitation courants (LINUX, Windows); gestion courante d'un parc informatique : comptes, partage d'imprimante, etc.; installation de passerelles matérielles et logicielles entre différents systèmes d'exploitation, partage de fichiers, archivage, sauvegarde.Les étudiants font l'installation et la gestion de serveurs et la gestion de systèmes informatiques.\n",
+    "prealables": [
+      [
+        "SIF1015"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1018",
+    "name": "Analyse de programmes",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nPrésenter à l'étudiant les principes et les techniques de base de l'implantation des langages de programmation. L'initier à l'évaluation des langages de programmation et à l'analyse de programmes. Familiariser l'étudiant avec certains outils de description et d'analyse des langages de programmation. Étude des langages de programmation dans l'optique de construction d'outils d'environnement de programmation.\nConcepts fondamentaux des langages de programmation modernes. Classification et évaluation des langages de programmation. Concepts et critères de qualité. Syntaxe et sémantique des langages de programmation. Méthodes de description formelles. Grammaire et Langages. Méthodes d'analyse lexicale et syntaxique : principes, approches et applications. Outils pour le traitement des langages. Analyse sémantique. Introduction à la génération et à l'optimisation de code. Éléments d'analyse de programmes en langages évolués : statique, dynamique, dépendances, etc.\n\n",
+    "prealables": [
+      [
+        "INF1035"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1019",
+    "name": "Programmation en temps réel",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nL'étudiant se familiarise avec les concepts de la programmation en temps réel.Concepts fondamentaux des systèmes d'exploitation en temps réel : séquencement et synchronisation des processus, communication entre les processus, gestion des interruptions matérielles et logicielles; procédures de recouvrement; protection des informations et des utilisateurs; qualités des systèmes temps-réels : efficacité, fiabilité, sécurité; gestion d'environnement par l'utilisation de capteurs branchés en réseau; notion d'architecture Client/Serveur dans un contexte de temps réel; introduction à la domotique domestique et industrielle.Des travaux pratiques codés en langage C ou en langage C++ favorisent la compréhension des concepts de temps réel.\n",
+    "prealables": [
+      [
+        "SIF1015"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1020",
+    "name": "Commerce électronique",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nCe cours a comme objectif principal l'initiation aux concepts de base des affaires et du commerce électronique et leur mise en pratique dans la réalisation d'un projet de commerce électronique. Le cours a aussi comme objectifs secondaires : d'apprendre à gérer un projet d'équipe en informatique.\nAperçu du commerce électronique; la \"digitalisation\" des affaires; les processus et stratégies B2B (business-to-business); le rôle des intermédiaires indépendants (third parties); l'environnement régulateur; EDI, e-commerce et Internet; risques des systèmes non-sécuritaires; risques de gestion; normes, protocoles et langages Internet; cryptographie et authentification; murs coupe-feu (firewalls); mécanismes de paiement en ligne pour le e-commerce; agents intelligents; le marketing sur le Web; autres sujets d'actualité en affaires et en commerce électronique.\nRèglement pédagogique particulier : Pour s'inscrire au cours INF1020 Commerce électronique, les étudiants inscrits au cheminement DEC-BAC (7533) doivent avoir réussi les cours obligatoires de la première session. Les étudiants inscrits au double baccalauréat : mathématiques et informatique (6833) ou inscrits au double baccalauréat en physique et en informatique (6925) doivent avoir réussi les cours obligatoires des cinq (5) premières sessions.\n\n"
+  },
+  {
+    "sigle": "INF1021",
+    "name": "Les architectures réparties",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nCe cours permet d'acquérir des connaissances sur les systèmes répartis. Il permet aux étudiants de s'initier aux méthodes de conception et de réalisation des applications informatiques réparties. À la fin du cours, les étudiants seront capables de comparer plusieurs méthodes de réalisation de systèmes répartis.Utilisation des SOCKETS : rappel sur le protocole TCP; interface Java de manipulation des sockets (Java.net); réalisation d'applications clients serveurs. Utilisation de Java RMI : introduction à RMI (Remote Method Invocation); implémentation des objets, côté client et côté serveur. Introduction à CORBA : évolution vers les applications distribuées; protocole RPC (Remote Procedure Calls); norme CORBA; implémentation du client et de l'objet distribué CORBA. Agents intelligents : concept d'agent; agents coopératifs, rationnels, adaptatifs, mobiles; agents informationnels intelligents; agents pour le Web; sécurité, mobilité, aspects algorithmiques. XML (eXtensible Markup Language) : SGML, HTML, XML et le Web; EDI et XML pour les applications d'affaires électroniques; définitions de nouveaux langages basés sur XML; technologies et applications XML; protocoles de communication basés sur le XML.\n",
+    "prealables": [
+      [
+        "INF1009"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1022",
+    "name": "Projet de synthèse en informatique",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nMettre en application ses connaissances et utiliser les méthodes de travail acquises pour la réalisation d'un projet. Avoir à approfondir certaines connaissances théoriques ou à expérimenter de nouvelles méthodes de travail. Développer ses habiletés à la communication et au travail d'équipe.\nSous la supervision d'un professeur, l'étudiant réalise un projet dans un des secteurs de l'informatique ou de ses applications : ce projet peut se faire dans une entreprise (commerce ou industrie) ou dans un laboratoire de l'Université. L'étudiant présente ses réalisations sous forme orale et écrite. \nRèglements pédagogiques particuliers : Pour s'inscrire au cours INF1022 Projet de synthèse en informatique, l'étudiant en informatique doit avoir réussi 60 crédits du programme.\rPour s'inscrire à ce cours, l'étudiant inscrit au double baccalauréat en mathématiques et en informatique ou au double baccalauréat en physique et en informatique doit avoir réussi 90 crédits du programme.\n\n"
+  },
+  {
+    "sigle": "INF1030",
+    "name": "Introduction au développement d'applications mobiles (version Android)",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nDans ce cours, l'étudiant sera amené à comprendre le cycle de développement d'applications mobiles. Utilisant le langage Java, les étudiants pourront créer des programmes tant standalone que déployés sur des plateformes mobiles. L'emphase sera mise sur les apprentissages des meilleurs pratiques de développement d'application mobiles et ce dans le but de faciliter et d'augmenter l'efficacité de ce développement. Les étudiants pourront aussi comprendre le fonctionnement de la machine virtuelle Dalvik comme plateforme pour le développement d'applications Android.\n\n",
+    "prealables": [
+      [
+        "INF1005",
+        "INF1035"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1031",
+    "name": "Développement d'applications mobiles avancées (version Android)",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nA partir de notions acquises dans le cours Introduction au développement d'applications mobiles (INF1030), ce cours permet aux étudiants de développer leurs compétences en développement d'applications mobiles  avancées et ce dans des domaines divers comme les sciences, le commerce, la santé, le divertissement, etc. De plus, les étudiants seront amenés à mieux comprendre le développement d'applications verticales impliquant des notions d'architecture multi-tiers, de connectivité réseau. De sécurité, etc.\n\n",
+    "prealables": [
+      [
+        "INF1030"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1032",
+    "name": "Introduction au développement d'applications mobiles (plateforme IOS)",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nDans ce cours, l'étudiant sera amené à comprendre le cycle de développement d'applications mobile. Utilisant le langage Objective C, les étudiants pourront créer  des programmes tant standalone que déployés sur des plateformes mobiles. L'emphase sera mise sur les apprentissages des meilleurs pratiques de développement d'application mobiles et ce dans le but de faciliter et d'augmenter l'efficacité de ce développement. Les étudiants pourront aussi apprendre comment développer des applications sur des plateformes mobiles IOS (ex : IPhone et IPad).\n\n",
+    "prealables": [
+      [
+        "INF1005",
+        "INF1035"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1033",
+    "name": "Sujets spéciaux en développement de logiciel ou en développement d'applic. mobiles",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nDéveloppement de logiciel :  Ce cours a pour objectif d'ajouter au programme des activités revêtant un intérêt actuel en développement de logiciel et qui ne sont pas nécessairement vues ou approfondies dans le programme.\nDéveloppement d'applications mobiles :  Ce cours a pour objectif d'ajouter au programme des activités revêtant un intérêt actuel en développement d'applications mobiles et qui ne sont pas nécessairement vues ou approfondies dans le programme.\n"
+  },
+  {
+    "sigle": "INF1034",
+    "name": "Introduction aux interfaces utilisateur",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nAmener l'étudiant à comprendre le comportement humain dans son interaction avec un environnement logiciel interactif, à développer une interface utilisateur simple et à évaluer l'ergonomie d'un logiciel interactif.\nConcepts de base de l'ergonomie du logiciel et des interactions personne-machine : modèles, principes et lignes directrices; introduction à la conception d'interfaces utilisateur : processus, outils, méthodologie et normes; outils de développement d'interfaces graphiques : utilisation des contrôles et des objets prédéfinis, propriétés, méthodes et gestion des événements; évaluation des interfaces : test, enquête et expérimentation.\nCe cours comporte des exercices en Java.\n\n",
+    "prealables": [
+      [
+        "INF1002"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1035",
+    "name": "Concepts avancés en objet",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nAmener l'étudiant à comprendre les mécanismes du développement orienté-objet. Maîtriser les concepts relatifs au paradigme objet. Utiliser un environnement de développement (IDE). Utiliser le paradigme de programmation événementielle. Utiliser les principes (et mécanismes) de la programmation par contrat. Intégrer la programmation aspect.\nEtude des notions importantes de la programmation orientée-objet : héritage simple et multiple, hiérarchie des classes, polymorphisme, notion de liaison statique et de liaison dynamique, etc. Notion d'interface et de classe abstraite. Notion d'extension de classes. Généricité. Pattern de conception (GoF). Refactoring. Notions de robustesse et de sécurité dans les applications. Programmation événementielle : événements, messages, gestion des exceptions. Programmation par contrats. Programmation aspect : notions d'aspect, de poincut, de point de jointure et d'advice.\nLes langages utilisés dans ce cours sont C#, Java et AspectJ (à titre comparatif). Les environnements de développement sont les plateformes Eclipse et Visuel C#. Le cours comporte 18 heures d'atelier.\n\n",
+    "prealables": [
+      [
+        "INF1004"
+      ]
+    ]
+  },
+  {
+    "sigle": "INF1036",
+    "name": "Sujets spéciaux en dével. de logiciel, en dével. d'applic. mobiles ou sc. des données",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nDéveloppement de logiciel :  Ce cours a pour objectif d'ajouter au programme des activités revêtant un intérêt actuel en développement de logiciel et qui ne sont pas nécessairement vues ou approfondies dans le programme.\nDéveloppement d'applications mobiles :  Ce cours a pour objectif d'ajouter au programme des activités revêtant un intérêt actuel en développement d'applications mobiles et qui ne sont pas nécessairement vues ou approfondies dans le programme.\nScience des données :  Ce cours a pour objectif d'ajouter au programme des activités revêtant un intérêt actuel en en science des données et qui ne sont pas nécessairement vues ou approfondies dans le programme.\n"
+  },
+  {
+    "sigle": "MAP1003",
+    "name": "Analyse numérique",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nFamiliariser l'étudiant avec les méthodes numériques, les éléments d'analyse réelle et matricielle à la base des méthodes numériques et leur mise en oeuvre informatique.Arithmétique computationnelle. Résolution des équations non linéaires. Résolution des systèmes linéaires et non linéaires de grande taille. Recherche des valeurs et vecteurs propres. Interpolation et lissage. Intégration et dérivation numérique. Eléments de la théorie de l'approximation et du traitement du signal (transformées). Méthodes numériques en optimisation.\n",
+    "prealables": [
+      [
+        "INF1002",
+        "PRO1026"
+      ],
+      [
+        "MAP1007"
+      ]
+    ]
+  },
+  {
+    "sigle": "MAP1006",
+    "name": "Mathématiques appliquées I",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nTransmettre à l'étudiant les bases de l'algèbre matricielle, l'introduire aux méthodes numériques, lui donner les outils nécessaires à la résolution des équations différentielles ordinaires et lui montrer certaines applications des équations différentielles. Algèbre matricielle : matrices, définitions et opérations, matrice triangulaire, diagonale, transposée d'une matrice, matrice régulière et rang, déterminants, inverse d'une matrice, solution d'équations linéaires, valeurs et vecteurs propres. Nombres complexe. Équations différentielles : classification, solution d'une équation différentielle avec interprétation géométrique; équations différentielles du premier ordre, équations exactes et facteur intégrant, équations à variables séparables, homogènes, linéaires, de Bernouilli; applications (trajectoires orthogonales, problèmes de taux, etc.). Équations différentielles d'ordre supérieur : système fondamental de solutions, équations linéaires, homogènes à coefficients constants, réduction d'ordre, équations linéaires non-homogènes, équations d'Euler-Cauchy; résolution en séries de puissances; applications. Systèmes d'équations différentielles homogènes et non homogènes.\n"
+  },
+  {
+    "sigle": "MAP1007",
+    "name": "Mathématiques appliquées II",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nAcquisition de notions fondamentales sur les fonctions à plusieurs variables, les courbes et les surfaces dans le plan et l'espace.  Applications du calcul différentiel et intégral à plusieurs variables ainsi que le calcul vectoriel.Eléments de géométrie analytique.  Courbes planes, tangentes et longueur d'arc, coordonnées polaires, intégrales en coordonnées polaires, équations polaires des coniques.  Vecteurs de dimension deux et trois, produit scalaire, produit vectoriel, droites et plans, surfaces.  Fonctions vectorielles et courbes dans l'espace, limites, dérivées et intégrales, cinématique, courbure, composantes tangentielle et normale de l'accélération, lois de Kepler.  Fonctions de plusieurs variables, limites et continuité, dérivées partielles, accroissement et différentielle, dérivation de fonctions composées, dérivées directionnelles, normales et plans tangents, valeurs extrêmes de fonctions à plusieurs variables, multiplicateurs de Lagrange.  Intégrales doubles, aire et volume, intégrales doubles en coordonnées polaires, aires de surfaces, intégrales triples, moment d'inertie et centre de masse, coordonnées cylindriques, coordonnées sphériques, changement de variables et jacobiens.  Champs vectoriels, intégrales curvilignes, indépendance du chemin, théorème de Green-Riemann, intégrales de surface, théorème de flux-divergence, théorème de Stokes.\n"
+  },
+  {
+    "sigle": "MAP1008",
+    "name": "Mathématiques appliquées III",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nApplication du calcul des transformées, des nombres complexes et des variables complexes.Séries de Fourier : applications aux problèmes, aux limites des équations aux dérivées partielles.  Fonction d'une variable complexe : théorèmes de Cauchy.  Calcul des résidus.  Transformation de Laplace : calcul des transformées de Laplace.  Applications aux équations différentielles ordinaires.\n",
+    "prealables": [
+      [
+        "MAP1007"
+      ]
+    ]
+  },
+  {
+    "sigle": "MAP1014",
+    "name": "Calcul",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nComprendre et approfondir les concepts de base du calcul matriciel, du calcul différentiel et du calcul intégral. Connaître les techniques et développer ses capacités calculatoires. Découvrir certaines applications de ces formes de calcul.\nCalcul matriciel : matrice et opérations matricielles, déterminant et résolution de systèmes linéaires. Calcul différentiel : fonctions élémentaires, la dérivée, son interprétation et ses propriétés, applications. Calcul intégral : l'intégrale, son interprétation et ses propriétés, applications. Extension aux fonctions de plusieurs variables (l'utilisation d'un logiciel de calcul symbolique est suggérée).\n\n"
+  },
+  {
+    "sigle": "MED1002",
+    "name": "Biostatistique",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nFamiliariser l'étudiant avec la terminologie et les notions de base en statistique. Comprendre le rôle des méthodes statistiques en médecine et interpréter correctement les résultats de recherche publiés dans la littérature médicale.\nCaractéristiques des principaux devis de recherche utilisés dans la recherche médicale. Particularités des principales méthodes tabulaires, graphiques et numériques utilisées pour résumer l'information contenue dans un ensemble de données. Probabilité marginale, conjointe et conditionnelle. Règles multiplicative et additive pour obtenir une probabilité voulue. Propriétés de la distribution normale, principes de la standardisation d'une variable normale et calcul de diverses probabilités en utilisant la définition d'une variable normale centrée réduite (Z) et la table de (Z). Comprendre la logique de l'inférence statistique et les notions de base suivantes : théorie de l'échantillonnage, estimation ponctuelle et par intervalle (intervalle de confiance), structure d'un test d'hypothèse, degré de signification (p-value), erreurs de types I et II, relation entre la taille de l'échantillon et la puissance statistique.\n\n"
+  },
+  {
+    "sigle": "MED1048",
+    "name": "Médecine factuelle",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nDéveloppement de compétences axées vers une pratique basée sur la compréhension et l'analyse des données scientifiques médicales probantes.\n"
+  },
+  {
+    "sigle": "MPU1015",
+    "name": "Algèbre",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nDévelopper l'habileté à généraliser à travers l'étude des structures algébriques. Développer la capacité de démontrer et d'appliquer dans un contexte abstrait. Connaître les concepts et les méthodes de base de l'algèbre moderne. Comprendre les liens entre l'algèbre classique (du secondaire) et l'algèbre moderne.Les structures de demi-groupe et de monoïde. La structure de groupe et les concepts connexes : sous-groupe, groupe cyclique, groupe-produit, groupe-quotient, homomorphisme de groupes et les théorèmes fondamentaux. La structure d'anneau et les concepts connexes : sous-anneau, anneau-produit, anneau-quotient, domaine d'intégrité, corps, anneau des polynômes sur un corps, corps des complexes.\n",
+    "prealables": [
+      [
+        "ALG1001"
+      ]
+    ]
+  },
+  {
+    "sigle": "MPU1017",
+    "name": "Algèbre linéaire et applications",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nAcquérir la connaissance des principaux concepts, problèmes, méthodes et applications de la théorie des espaces vectoriels et des transformations linéaires. Utilisation d'un logiciel de calcul symbolique.\nMatrices et transformations, déterminants, espaces et sous-espaces de Rn, orthogonalité, systèmes d'équations linéaires, espaces vectoriels, applications linéaires, représentations matricielles, changement de base.\n\n"
+  },
+  {
+    "sigle": "MPU1018",
+    "name": "Algèbre linéaire avancée",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nApprofondir la théorie des espaces vectoriels et des transformations linéaires en situant les problèmes dans un cadre plus général et en les analysant plus en détail.\nValeurs propres et vecteurs propres d'un opérateur linéaire, diagonalisation, théorème de Cayley-Hamilton, formes canoniques, formes linéaires, espace dual, formes bilinéaires, quadratiques et hermitiennes, espaces euclidiens, opérateurs linéaires sur un espace euclidien.\n\n",
+    "prealables": [
+      [
+        "MPU1015"
+      ],
+      [
+        "MPU1017"
+      ]
+    ]
+  },
+  {
+    "sigle": "MPU1027",
+    "name": "Equations différentielles",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nMéthodes analytiques dans l'obtention des solutions et dans l'étude qualitative des équations différentielles ordinaires.\nEquations différentielles du premier ordre. Equations linéaires d'ordre quelconque à coefficients constants. Solutions en série. Problème de Sturm-Liouville et fonctions orthogonales.\n\n",
+    "prealables": [
+      [
+        "MPU1045"
+      ],
+      [
+        "MAP1006"
+      ]
+    ]
+  },
+  {
+    "sigle": "MPU1039",
+    "name": "Analyse complexe",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nDévelopper la compréhension des éléments de la théorie des variables complexes et l'habileté à l'appliquer.Les nombres complexes, dérivation complexe, équations de Cauchy-Riemann, intégration complexe (théorème de Cauchy), formule intégrale de Cauchy et ses conséquences, séries de Taylor et de Laurent, étude des points singuliers, calcul des résidus, calcul d'intégrales réelles et de séries réelles à l'aide des nombres complexes.\n",
+    "prealables": [
+      [
+        "MPU1054"
+      ],
+      [
+        "MPU1055"
+      ]
+    ]
+  },
+  {
+    "sigle": "MPU1040",
+    "name": "Projet de synthèse",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nPar le biais de la réalisation d'un projet, l'étudiant mettra en application ses connaissances de sa discipline, s'initiera à la recherche et au travail autonome et développera ses habiletés à communiquer ses connaissances et les résultats de son travail.\nEn collaboration avec son professeur l'étudiant choisit un projet qui requiert un travail (substantiel).  Il réalise le projet et présente un rapport complet.\nRèglement pédagogique particulier : Pour s'inscrire au cours MPU1040 Projet de synthèse en mathématiques, l'étudiant du Baccalauréat en mathématiques (7721) doit avoir complété 60 crédits de son programme et l'étudiant du Double baccalauréat en mathématiques et enseignement au secondaire - maths (6721) doit avoir réussi 75 crédits de son programme.\n\n"
+  },
+  {
+    "sigle": "MPU1044",
+    "name": "Applications mathématiques",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nDévelopper des habiletés en résolution des problèmes à l'aide de problèmes concrets et étudier les théories mathématiques permettant de les résoudre.\nApplications logiques. Algèbre de Boole et réseaux logiques. Programmation linéaire et applications. Théorie des graphes et applications.\nNote : Pour les étudiants et étudiantes du baccalauréat en enseignement au secondaire, profil mathématiques (7654), le préalable est MPU1056 Nombres et structures (3 crédits).\nPour les étudiants et étudiantes du Double baccalauréat : mathématiques et enseignement au secondaire-maths (6721), les préalables sont MPU1056 et MAP1014.\n"
+  },
+  {
+    "sigle": "MPU1045",
+    "name": "Analyse à une variable réelle I",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nEtudier les propriétés des nombres réels et de la topologie de R. Développer la compréhension de la théorie du calcul différentiel et l'habileté à faire des démonstrations rigoureuses.Le système des nombres réels, quelques concepts topologiques (théorème de Bolzano-Weierstrass), suites numériques, séries numériques, limite et continuité (théorème des valeurs intermédiaires) dérivation (théorème de Rolle, de la moyenne, règle de l'Hôpital).\n"
+  },
+  {
+    "sigle": "MPU1049",
+    "name": "Eléments d'analyse",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nApprofondir les notions de nombres réels, de fonctions et de leurs représentations.  Développer l'habileté à analyser et à tracer des courbes et des surfaces.Etude des nombres : nombres naturels, induction mathématique et démonstration par récurrence; entiers relatifs; nombres rationnels et exposants; corps archimédien des réels, densité, nombres décimaux, suites et série; nombres complexes, opérations algébriques, représentation géométrique, formule de De Moivre, racine n ième.  Topologie de R et R2 : ouverts et fermés; points intérieurs, extérieurs et frontières.  Fonctions réelles : représentations, fonctions continues à une et deux variables, fonction inverse, représentation.  Courbes et surfaces classiques : coordonnées cartésiennes, polaires, cylindriques et sphériques : tracé de courbes et de surfaces.\n",
+    "prealables": [
+      [
+        "EMA1011"
+      ],
+      [
+        "MAP1014"
+      ]
+    ]
+  },
+  {
+    "sigle": "MPU1050",
+    "name": "Vecteurs, calcul matriciel",
+    "cycle": 1,
+    "annee": "Cours d'appoint",
+    "description": "\nPermettre à l'étudiant de se familiariser avec les notions de base de calcul vectoriel et matriciel afin de permettre l'accès à certains programmes universitaires.\nVecteurs: aspects géométriques et algébriques, produit scalaire et produit vectoriel, applications. Matrices: opérations sur les matrices, calcul et propriétés des déterminants, systèmes d'équations linéaires, méthode de Gauss et formule de Cramer, inversion des matrices.\nL'activité est évaluée à l'aide des mentions \"S\" (succès) et \"E\" (échec).  \n"
+  },
+  {
+    "sigle": "MPU1051",
+    "name": "Éléments de calcul différentiel",
+    "cycle": 1,
+    "annee": "Cours d'appoint",
+    "description": "\nConnaître les principales fonctions mathématiques, apprendre à les dériver et être capable d'appliquer le calcul différentiel à la résolution de problèmes d'optimisation, de traçage de courbes et de développement en séries.\nRappel sur les fonctions, résolution d'équations et d'inéquations. La dérivée et les règles de dérivation. Application de la dérivée à l'étude et au traçage des courbes. Différentielles. Les fonctions inverses et leur dérivée. Limites de suites et de séries. Critères de convergence. Développement en séries de Taylor et de MacLaurin.\nL'activité est évaluée à l'aide des mentions \"S\" (succès) et \"E\" (échec).  \n"
+  },
+  {
+    "sigle": "MPU1052",
+    "name": "Éléments de calcul intégral",
+    "cycle": 1,
+    "annee": "Cours d'appoint",
+    "description": "\nConnaître les principales méthodes d'intégration et être capable de les appliquer.\nRecherche de primitives. Intégrale définie. Méthodes d'intégration par substitution, par parties et par fractions partielles.\nL'activité est évaluée à l'aide des mentions \"S\" (succès) et \"E\" (échec).  \n"
+  },
+  {
+    "sigle": "MPU1054",
+    "name": "Analyse à une variable réelle II",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nEtudier la théorie de l'intégrale Riemann. Approfondir la compréhension du calcul intégral et des séries de fonctions.\nContinuité uniforme, intégrale de Riemann (théorème fondamental du calcul, intégrales impropres), suites de fonction, séries de fonction, séries de puissances (séries de Taylor).\n\n",
+    "prealables": [
+      [
+        "MPU1045"
+      ]
+    ]
+  },
+  {
+    "sigle": "MPU1055",
+    "name": "Topologie et analyse à plusieurs variables réelles",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nApprofondir certaines notions de l'analyse réelle par la généralisation du concept de distance et l'étude des fonctions de plusieurs variables réelles. Explorer les notions de base de la topologie via les espaces métriques. Développer l'habileté à penser dans un contexte multidimensionnel.\nEspaces métriques, espaces complets (théorème de point fixe de Banach), espaces connexes, espaces compacts, structure topologique, dérivées en plusieurs variables réelles, théorème de Taylor, problèmes d'extremum, fonctions inverses.\n\n",
+    "prealables": [
+      [
+        "MPU1045"
+      ]
+    ]
+  },
+  {
+    "sigle": "MPU1056",
+    "name": "Nombres et structures",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nExplorer la notion de nombre et les propriétés des systèmes de nombres. Découvrir la notion de structure algébrique et identifier les structures des ensembles des nombres.Construction algébrique des naturels, des entiers et des rationnels. Propriétés de l'addition et de la multiplication des naturels, des entiers. Relation de la division entière, algorithme d'Euclide, notion de nombre premier et théorème fondamental de l'arithmétique, pgcd et ppcm. Relation de congruence, ses propriétés, construction des ensembles Zn et de leurs propriétés, diviseurs de zéro. Notion de l'infini : ensembles équipotents, cardinaux. Étude des nombres complexes.\n",
+    "prealables": [
+      [
+        "ALG1001"
+      ]
+    ]
+  },
+  {
+    "sigle": "MPU1058",
+    "name": "Mesure et intégration",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nApprofondir les connaissances en analyse. Etudier une nouvelle approche d'intégration basée sur l'intégrale de Lebesgue.\nNotions de mesures et tribus. Fonctions mesurables. Intégrale de Lebesgue et ses propriétés. Convergence monotone et dominée. Comparaison avec l'intégrale de Riemann.\n\n",
+    "prealables": [
+      [
+        "MPU1054"
+      ]
+    ]
+  },
+  {
+    "sigle": "PAF1010",
+    "name": "Analyse quantitative de problèmes de gestion",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nCe cours vise à présenter aux étudiants divers problèmes de gestion ainsi que les méthodes et les approches permettant de les résoudre.  Au terme de ce cours, l'étudiant sera à même de mieux comprendre la nature de différents problèmes de gestion nécessitant une démarche formelle dans le processus d'analyse et de critiquer les approches ainsi que les résultats obtenus.\nDes mises en situation concrètes sont proposées afin de situer les étudiants dans des contextes précis.  Parmi les problématiques abordées, on retrouve le contrôle de la qualité, la gestion des stocks, la planification de la production, les études de marché, l'évaluation du risque ainsi que le traitement et l'analyse de l'information dans un contexte de prise de décision en gestion.  Au niveau de l'analyse statistique, les notions suivantes sont abordées : probabilités, distributions discrètes et continues, variables aléatoires, moyenne, écart-type, intervalles de confiance, comparaison de moyennes, échantillonnage et régression linéaire simple.  Modélisation : formulation de modèles linéaires, méthode du simplexe, interprétation des résultats, analyse de sensibilité et problèmes en nombres entiers.\n\n"
+  },
+  {
+    "sigle": "PIF1005",
+    "name": "Mathématiques pour informaticiens I",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nCe cours vise à introduire les concepts mathématiques fondamentaux en informatique.Rappels mathématiques : calcul avec les nombres réels, inégalités, logarithmes; théorie des ensembles : relations, fonctions, relations d'ordre; logique : techniques de preuve; algèbre booléenne ; graphes; induction mathématique.\n"
+  },
+  {
+    "sigle": "PIF1006",
+    "name": "Mathématiques pour informaticiens II",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nCe cours vise à compléter la formation de base en mathématiques en vue d'applications en informatique.Algèbre matricielle : opérations, déterminant et matrice inverse; concepts d'analyse numérique : représentation des nombres et erreur, interpolation et approximation; langages formels : langage et grammaire, machine à états finis avec et sans sorties , équivalence d'automates, automate fini non déterministe, expression régulière, machine de Turing; cryptographie : schéma de cryptage, authentification, identification, cryptographie à clé secrète, cryptographie à clé publique; codage et compression de données : techniques de compression, compression sans perte (code de Hoffman), compression avec perte (compression JPEG).Ce cours comporte des travaux avec le logiciel Matlab.\n",
+    "prealables": [
+      [
+        "PIF1005"
+      ]
+    ]
+  },
+  {
+    "sigle": "PMA1002",
+    "name": "Sujets spéciaux en mathématiques I",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nCe cours a pour objectif d'ajouter au programme des activités revêtant un intérêt actuel en mathématique.\nLes mathématiques continuent toujours d'innover et il est important que les étudiants aspirant à une carrière en mathématique aient l'occasion de connaître d'autres sujets que ceux vus actuellement dans le programme. Le département de mathématiques et informatique dispose d'une équipe de professeurs pouvant aborder de nombreux sujets intéressants comme : logique, combinatoire, analyse fonctionnelle, analyse en plusieurs variables réelles, fractales, théorie du chaos, histoire moderne de mathématiques, théorie des groupes, théorie des catégories, équations différentielles, théorie des risques et ses applications (actuariat, finance), etc.\n\n",
+    "prealables": [
+      [
+        "MPU1018",
+        "MPU1055",
+        "STT1030"
+      ]
+    ]
+  },
+  {
+    "sigle": "PMA1003",
+    "name": "Sujets spéciaux en mathématiques II",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nCe cours a pour objectif d'ajouter au programme des activités revêtant un intérêt actuel en mathématique.\nLes mathématiques continuent toujours d'innover et il est important que les étudiants aspirant à une carrière en mathématique aient l'occasion de connaître d'autres sujets que ceux vus actuellement dans le programme. Le département de mathématiques et informatique dispose d'une équipe de professeurs pouvant aborder de nombreux sujets intéressants comme: logique, combinatoire, analyse fonctionnelle, analyse en plusieurs variables réelles, fractales, théorie du chaos, histoire moderne de mathématiques, théorie des groupes, théorie des catégories, équations différentielles, théorie des risques et ses applications (actuariat, finance), etc.\n\n",
+    "prealables": [
+      [
+        "MPU1018",
+        "MPU1055",
+        "STT1030"
+      ]
+    ]
+  },
+  {
+    "sigle": "PMA1004",
+    "name": "Mathématiques et technologies",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nDévelopper l'habileté de l'étudiant à utiliser adéquatement une calculatrice graphique. Familiariser l'étudiant à certains logiciels spécialisés dans le domaine de l'enseignement des mathématiques. Rendre l'étudiant apte à tirer profit des différentes ressources mathématiques existantes et accessibles via Internet.\nCalculatrice graphique : relations et fonctions (1er et 2e degré), autres fonctions algébriques et transcendantes; programmation. Logiciels : éditeur d'équations, éditeurs graphiques, calculs symboliques, systèmes interactifs de traitement de figures géométriques. Internet : examiner et critiquer des outils mathématiques disponibles sur le Web.\nNote : Pour les étudiants et étudiantes du Baccalauréat en enseignement au secondaire, profil mathématiques (7654), le préalable est GEM1003 Géométrie euclidienne (3 crédits).\nPour les étudiants et étudiantes du Double baccalauréat : mathématiques et enseignement au secondaire-maths (6721), les préalables sont EMA1011 ou MPU1045 ET MAP1006 ou MAP1014.\n"
+  },
+  {
+    "sigle": "PMA1005",
+    "name": "Résolution de problèmes mathématiques",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nInitier l'étudiant à différentes heuristiques de résolution de problèmes. Améliorer son niveau de compétence en résolution de problèmes. Développer son sens critique par l'analyse de diverses démarches exposées. Développer sa capacité à communiquer dans le cadre d'un processus de résolution de problèmes.\nConcepts de base : exercice, problème, résoudre un problème mathématique; composantes, types et classification de problèmes. Heuristiques générales, heuristiques spécifiques. Modèles de résolution de problèmes : Polya, Mason. Rôle de l'affectivité. Applications : problèmes tirés de divers domaines mathématiques (arithmétique, théorie des nombres, géométrie, algèbre, géométrie analytique, trigonométrie, logique, combinatoire, probabilité, statistique, analyse, paradoxes, jeux et curiosités mathématiques).\n\n",
+    "prealables": [
+      [
+        "GEM1003",
+        "MPU1054",
+        "MPU1055"
+      ],
+      [
+        "MPU1015"
+      ]
+    ]
+  },
+  {
+    "sigle": "PMA1006",
+    "name": "Preuves et démonstrations mathématiques",
+    "cycle": 1,
+    "annee": "Quatrième année",
+    "description": "\nConnaître l'évolution de la notion de démonstration mathématique. Réfléchir sur les différentes conceptions de la notion de preuve. Améliorer ses compétences à prouver. Dégager certaines stratégies d'enseignement du concept de preuve mathématique.\nHistoire de la démonstration mathématique. Types de preuves : directes, indirectes, par récurrence. Applications dans différents domaines (géométrie, algèbre...). Raisonnement démonstratif et raisonnement «plausible». Généralisation, particularisation, analogie. Preuves et démonstrations mathématiques dans l'enseignement secondaire. Typologie de Balacheff.\n\n",
+    "prealables": [
+      [
+        "MPU1015"
+      ]
+    ]
+  },
+  {
+    "sigle": "PMA1007",
+    "name": "Découvertes mathématiques",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nPermettre à l'étudiant de :\ndécouvrir de nouvelles applications ou de nouveaux chapitres des mathématiques;\raborder de nouveaux sujets mathématiques dont la combinatoire;\rs'initier à la recherche en mathématiques;\rs'initier à l'utilisation d'un logiciel de calcul symbolique.Ce cours peut utiliser différentes approches pour atteindre ces objectifs. Par exemple :\rutiliser l'approche par problèmes;\rétudier certains chapitres de l'histoire des mathématiques modernes;\rà partir de jeux mathématiques, réfléchir aux modélisations possibles et développer des minis théories;\rà partir de problèmes mathématiques (par exemple, ceux soulevés par la théorie des nombres ou d'autres théories), rechercher les différents résultats obtenus au cours des années (travail personnel de recherche). Note : Pour les étudiants et étudiantes du baccalauréat en enseignement au secondaire, profil mathématiques (7654), le préalable est MPU1015 Algèbre (3 crédits).\nPour les étudiants et étudiantes du Double baccalauréat : mathématiques et enseignement au secondaire-maths (6721) et du Baccalaurat en mathématiques (7721), les préalables sont MPU1015 et MPU1017.\n"
+  },
+  {
+    "sigle": "PRO1024",
+    "name": "Programmation informatique d'ingénierie II",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nL'objectif consiste à compléter la formation informatique de l'ingénieur de telle sorte qu'il puisse faire un usage efficient des principaux moyens informatiques disponibles à l'ingénieur.Méthodologie de programmation : modularisation, analyse et programmation ascendante et descendante, programmation structurée (rappel), documentation, recherche d'efficacité, portabilité, modifiabilité.  Algorithmes : spécifications.  Représentation de matrices, listes, arbres.  Recherche et tri.  Evaluation d'algorithmes et de logiciels.  Systèmes et gestion de bases de données : modèles par réseau, hiérarchiques et relationnels; étude de systèmes typiques sur micro-ordinateur et ordinateur principal.  Graphisme : programmation, primitives, développement à l'aide de systèmes standards (tel Graphical Kernel Systems et PLOTIO), dessin assisté par ordinateur.  Programmation pour applications en temps réel : principes, méthodes et techniques; applications.  Communication interordinateurs.  Design de l'interface utilisateur-logiciel-ordinateur : structures de menus, dialogues, graphismes, etc.; ergonomie d'interface.  Chiffriers et autres applications en génie.  Systèmes logiciels intégrés : études de systèmes commerciaux, spécialement sur micro-ordinateur, intégrant diverses fonctions telles : gestion de bases de données, chiffriers électroniques, production de graphismes, traitement de textes, communication interordinateurs, messagerie, etc.\n",
+    "prealables": [
+      [
+        "GMC1032",
+        "PRO1028"
+      ]
+    ]
+  },
+  {
+    "sigle": "PRO1026",
+    "name": "Programmation et enseignement",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nDévelopper la rigueur scientifique par une étude systématique de la programmation.  Acquérir les bases d'un langage structuré de programmation.Familiarisation avec les outils mathématiques permettant de résoudre des problèmes classiques avec les différentes classes de solutions informatiques et avec la vérification de programmes.  Perspective historique de la programmation et de l'informatique.  Structure d'un ordinateur.  Différentes stratégies de résolutions de problèmes concrets.  Etude d'un langage de programmation.  Programmation de problèmes faisant appel à différentes classes de solutions : itération, récursion.  Outils formels pour la réalisation de programmes : logique, mathématique, récurrence.  Eléments de vérification de programmes.\n"
+  },
+  {
+    "sigle": "PRO1027",
+    "name": "Programmation scientifique en C",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nApprofondir les concepts fondamentaux de la conception et de la production de logiciel. Développer l'habileté à réaliser des logiciels de qualité. Réaliser des applications pratiques dans le domaine des méthodes numériques.\nÉtude des langages C et C++. Qualité des programmes : clarté, lisibilité, modifiabilité, efficacité, facilité d'usage, robustesse. Programmation modulaire. Programmation en langage C ou C++. A titre indicatif, les applications sont choisies parmi les suivantes : statistiques, manipulation de matrices, résolution de systèmes d'équations linéaires, interpolation, approximation, dérivation et intégration numériques.\n\n",
+    "prealables": [
+      [
+        "INF1002",
+        "PRO1026"
+      ]
+    ]
+  },
+  {
+    "sigle": "ROP1021",
+    "name": "Optimisation",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nConnaître les problèmes et les méthodes de la programmation linéaire et de la théorie des graphes et des réseaux. Devenir habile à modéliser. Comprendre le fonctionnement des algorithmes utilisés et être capable de les appliquer.Programmation linéaire : les problèmes de programmation linéaire et leur modélisation, résolution graphique et matricielle, algorithmes du simplexe, notions de dualité et analyse de sensibilité. Graphes et réseaux : généralités sur les graphes, algorithmes de chemins, problèmes d'ordonnancement, flots de valeur maximale et coût minimum, problèmes d'affectation, autres applications.\n"
+  },
+  {
+    "sigle": "ROP1022",
+    "name": "Théorie de la décision, files d'attente et chaînes de Markov",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nCe cours vise à familiariser l'étudiant avec quatre approches classiques en recherche opérationnelle.Théorie de la décision : sous incertitude, apport de l'information, analyse a priori, à posteriori et pré à posteriori. Programmation dynamique : déterministe et stochastique. Files d'attente : Modèles M/M/1; M/G/1; M/M/S avec système et source finis ou infinis. Chaînes de Markov et applications.\n",
+    "prealables": [
+      [
+        "STT1001",
+        "STT1042"
+      ]
+    ]
+  },
+  {
+    "sigle": "SDD1001",
+    "name": "Introduction à la science des données",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nCe cours aborde les langages modernes utilisés en sciences des données comme Python, les bibliothèques de statistiques, de calcul symbolique ainsi que leurs applications. Les langages seront abordés dans les paradigmes orientés objets et fonctionnels.\n"
+  },
+  {
+    "sigle": "SDD1002",
+    "name": "Modélisation et simulation",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nCe cours aborde les différentes techniques théoriques et pratiques de simulation, de modélisation, et de visualisation, des données. L'étudiant sera amené à explorer plusieurs outils utilisés dans les sciences des données. Ce cours aborde aussi les notions liées à la généralisation: sous-ajustement, sur-ajustement, validation croisée. Approches: classification, régression, agrégation (clustering). Principaux éléments: Outils de simulation, de visualisation et manipulation de données comme Python ou R ou Orange, ou Tableau, autre.\r \n",
+    "prealables": [
+      [
+        "STT1001"
+      ],
+      [
+        "PIF1005"
+      ]
+    ]
+  },
+  {
+    "sigle": "SDD1003",
+    "name": "Gestion des entrepôts de données",
+    "cycle": 1,
+    "annee": "Quatrième année",
+    "description": "\nCe cours permet à l'étudiant de comprendre, modéliser et manipuler les données de masse à l'aide les nouvelles technologies de Base de données (BD) non normalisées telles que NewSql, NoSQL qui les supportent. L'architecture des données et l'optimisation des Requêtes sera également abordée. Principales bases de données abordées: Base de données documents, Base de données clé-valeur, Base de données large colonnes.\r \n",
+    "prealables": [
+      [
+        "SMI1002"
+      ],
+      [
+        "INF1004"
+      ]
+    ]
+  },
+  {
+    "sigle": "SDD1004",
+    "name": "Apprentissage Automatique et applications",
+    "cycle": 1,
+    "annee": "Quatrième année",
+    "description": "\nCadre théorique et pratique des algorithmes d'apprentissage automatique (comme machine à vecteurs de support (SVM)) entraînement, validation. Introduction à la modélisation et aux algorithmes d'apprentissage machine basée sur les données (apprentissage par l'exemple). Algorithmes: voisin le plus proche (comme KNN), régression linéaire et linéaire généralisée, mixtures de Gaussiennes, processus Gaussien, méthodes de noyaux. Introduction à l'apprentissage profond.\r \n",
+    "prealables": [
+      [
+        "SDD1002"
+      ]
+    ]
+  },
+  {
+    "sigle": "SDD1005",
+    "name": "Probabilité & Inférence",
+    "cycle": 1,
+    "annee": "Quatrième année",
+    "description": "\nCe cours aborde les différentes techniques théoriques et pratiques de la décision, Files d'attente, chaînes de Markov et réseaux Bayésiens.\r \n",
+    "prealables": [
+      [
+        "SDD1002"
+      ]
+    ]
+  },
+  {
+    "sigle": "SFC1005",
+    "name": "Probabilité appliquée à la criminalistique",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nInitier l'étudiant aux principales méthodes statistiques et aux principaux modèles de probabilité utilisés en criminalistique. \nProbabilités : axiomes de Kolmogorov, probabilités conditionnelles, indépendance d'événements, applications à la génétique des populations et aux preuves d'ADN. Théorème de Bayes : probabilités a priori et a posteriori. Statistique descriptive. Variables aléatoires discrètes et continues. Echantillonnage et intervalles de confiance. Test d'hypothèses. Analyse de la variance. Régression et corrélation linéaire. Modèles d'interprétation de différents types d'indice en justice. Argumentation probabiliste, erreurs d'interprétation et fallacies.\n\n",
+    "prealables": [
+      [
+        "SFC1001"
+      ]
+    ]
+  },
+  {
+    "sigle": "SIF1015",
+    "name": "Systèmes d'exploitation",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nL'étudiant se familiarise avec les concepts fondamentaux des systèmes d'exploitation : structure générale d'un système d'exploitation, gestion des différents sous-systèmes : processus/thread, communication inter-processus/thread, systèmes de fichiers, accès réseau, gestion de la mémoire.\nGestion des processus et des threads; gestion des entrées/sorties tels que les dispositifs Windows; communication inter-processus : tubes anonymes et nommés, files de messages, sockets, signaux; introduction aux principes de fonctionnement d'un système de fichiers; introduction aux concepts de la gestion de la mémoire; introduction à la communication réseau par sockets.\nLes étudiants expérimentent les concepts théoriques par des projets de développement d'utilitaires dans un environnement de développement ouvert sous une plateforme telle que UNIX/LINUX/ANDROID.\nRèglement pédagogique particulier : Pour les étudiants du baccalauréat en génie électrique (concentration génie informatique) (7144) le préalable est GEI1072 Résolution de problèmes d'ingénierie en C. Pour les étudiants du baccalauréat en informatique (7833) les préalables sont INF1004 Structures de données et algorithmes et SIF1053 Architecture des ordinateurs.\n\n"
+  },
+  {
+    "sigle": "SIF1032",
+    "name": "Graphisme par ordinateur",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nL'étudiant se familiarise avec les algorithmes fondamentaux du graphisme : représentation des objets 2D et 3D. Il est amené à comprendre les concepts de transformation linéaire en coordonnées homogènes, la composition des transformations et le calcul matriciel, la transformation en perspective, les modèles de réflexion de la lumière, la couleur, l'illumination et le rendu, l'ajout de texture. Création de modèles d'objets simples, formes polygonales; création de modèles plus complexes à l'aide de moteurs de formes; application de transformations 3D pour la visualisation et les déplacements d'objets 3D; introduction aux notions de réalisme d'une scène : illumination, couleur, propriétés des objets : texture, transparence.Le cours comporte des projets pratiques  d'animation réalisés en langage C, en langage C++ à l'aide des libraires graphiques OpenGl et DirectX\n",
+    "prealables": [
+      [
+        "MAP1006",
+        "PIF1006"
+      ],
+      [
+        "INF1004"
+      ]
+    ]
+  },
+  {
+    "sigle": "SIF1033",
+    "name": "Traitement d'image",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nAmener l'étudiant à pouvoir utiliser l'ordinateur pour traiter une image de façon à en améliorer la perception visuelle et à permettre la détection d'objets significatifs. \nPrésentation des notions de base du traitement de l'image : correction géométrique et radiométrique des images, amélioration du contraste, amélioration des images par filtrage spatial isotropique et anisotropique, spectral et morphologique; segmentation des images par seuillage; détection des arêtes et des contours, détection des droites et des formes circulaires, détection des objets par corrélation spatiale; génération d'images tomographiques; applications Client/Serveur permettant le traitement d'image à distance; protocoles de transfert d'images.\nLes étudiants expérimentent les concepts du traitement des images par des projets pratiques codés en langage C ou en langage C++.\n\n",
+    "prealables": [
+      [
+        "INF1004"
+      ],
+      [
+        "STT1001",
+        "STT1042"
+      ]
+    ]
+  },
+  {
+    "sigle": "SIF1053",
+    "name": "Architecture des ordinateurs",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nL'étudiant prendra connaissance des éléments fondamentaux des architectures et des composantes des ordinateurs modernes tant statiques que mobiles (ex : architectures ARM, X86, x86-64), des organes périphériques. \nEtude des composantes des ordinateurs modernes: mémoire, circuits et  représentation de l'information. Unité de commande, représentation des instructions machine, notions d'adressage, notions de microprogrammation et machine virtuelle. Unité arithmétique et logiques. Introduction des notions de communication série et parallèle.\n\n"
+  },
+  {
+    "sigle": "SMI1001",
+    "name": "Bases de données I",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nLe cours vise à donner une solide introduction tant théorique que pratique aux concepts informatiques fondamentaux ayant trait aux bases de données, particulièrement aux bases de données relationnelles. Outre la modélisation des données qui constitue une partie importante de ce cours, l'apprentissage du langage SQL et d'un SGBD (Système de Gestion de Bases de Données) moderne seront également des objectifs importants de ce cours.\nIntroduction aux bases de données : modèles et langages, les différents utilisateurs et leurs besoins, structure et architecture des SGBD. Le modèle Entité-Relation, modélisation UML. Le modèle relationnel : aperçu de l'algèbre et du calcul relationnel, notion de vue. Le langage SQL, aperçu d'autres langages relationnels. Les contraintes d'intégrité, les données manquantes et les valeurs nulles. La conception des bases de données relationnelles, dépendances fonctionnelles, dépendances multivaluées, dépendances de jointure, normalisation, formes normales 1FN, 2FN, 3FN, FNBC, 4FN et 5FN. Autres types de bases de données : relationnelles-objets et multidimensionnelles. Introduction aux données multimédias et XML.\nCe cours utilise le système de gestion de bases de données Oracle, le langage PL/SQL et l'utilitaire TOAD. Le cours comporte 18 heures d'atelier.\n\n"
+  },
+  {
+    "sigle": "SMI1002",
+    "name": "Bases de données II",
+    "cycle": 1,
+    "annee": "Deuxième-troisième année",
+    "description": "\nLe cours porte principalement sur des considérations techniques sous-jacentes à l'utilisation ou à la conception des SGBD, toujours dans le contexte du SGBD Oracle qui sert d'illustration et de contexte de mise en pratique des concepts. L'étudiant aura donc l'opportunité d'approfondir sa compréhension du fonctionnement interne d'un SGBD, notamment de Oracle, et d'autres aspects complémentaires associés à l'exploitation des données.Stockage et structures de fichiers, indexation et fonctions de hachage. Traitement et optimisation des requêtes. Traitement des transactions. Contrôle de la concurrence. Systèmes de recouvrement. Sécurité, contrôle des accès et encryptage. Bases de données et applications Web, modèles client-serveur et multitiers. Architectures des SGBD, bases de données parallèles et distribuées. Analyses des données, OLAP (on-line analytical processing), entreposage (warehousing) et forage (mining) de données.Ce cours utilise le système de gestion de bases de données Oracle, le langage PL/SQL et l'interface JSP (Java Sever Page).\n",
+    "prealables": [
+      [
+        "SMI1001"
+      ]
+    ]
+  },
+  {
+    "sigle": "STT1001",
+    "name": "Probabilités et statistiques",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nStatistiques de base en vue des applications.Séries statistiques : histogramme et polygone.  Mesures de tendance centrale.  Mesures de dispersion.  Moments.  Eléments de probabilités : variables aléatoires, distributions binomiales, hypergéométriques, normales.  Poisson.  Introduction à l'échantillonnage.  Tests d'hypothèses simples.\n"
+  },
+  {
+    "sigle": "STT1003",
+    "name": "Probabilités",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nFamiliariser l'étudiant avec les notions de base de la théorie des probabilités.Lois de probabilités; probabilités conditionnelles et indépendance; théorème de Bayes. Variables aléatoires et espérance mathématique. Lois de probabilités discrètes et continues : binomiale, Poisson, géométrique, hypergéométriques, uniforme, exponentielle, normale. Transformation de variables aléatoires. Probabilités et fonctions de densité jointes, marginales et conditionnelles. Approximation d'une loi binomiale : par une loi de Poisson, par une loi normale. Inégalité de Tchebycheff. Théorème limite central et applications.\n"
+  },
+  {
+    "sigle": "STT1006",
+    "name": "Statistiques I",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nAmener des étudiants à la connaissance de techniques statistiques élémentaires qui leur permettront une analyse et une interprétation des données résultant de l'observation qualitative et quantitative des situations observées.Compilation des données et présentation graphique, mesures de centres et de dispersion.  Les percentiles et les divers scores en éducation.  La probabilité.  Notions de corrélation et de régression linéaire.  Tests d'hypothèse; sur la moyenne, sur une proportion, comparaison de moyenne, ajustement.\n"
+  },
+  {
+    "sigle": "STT1013",
+    "name": "Méthodes statistiques de l'ingénieur",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nPermettre à l'ingénieur de planifier et d'analyser scientifiquement.Distributions d'échantillonnage (t, chi-carré, F).  Tests d'hypothèse et estimation.  Introduction à la planification expérimentale.  Etude de plans d'expérience.  Analyse de variance à un seul facteur.  Analyse de régression modèle linéaire simple.  Modèles linéaires à plusieurs variables indépendantes.  Polynômes orthogonaux.  Analyse de variance à plusieurs facteurs.\n",
+    "prealables": [
+      [
+        "STT1001"
+      ]
+    ]
+  },
+  {
+    "sigle": "STT1020",
+    "name": "Analyse de la variance",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nInitier l'étudiant aux notions de l'analyse de la variance et de la planification d'expériences en vue d'applications.\nNotions d'erreur expérimentale, de randomisation. Répliques. Blocs. Effets fixes et aléatoires. Modèle à un facteur. Comparaisons multiples. Modèle à deux facteurs. Interaction. Études de quelques plans d'expériences : plan complètement aléatoire, blocs aléatoires, carrés latins, incomplets. Résidus et diagnostics. Applications.\nAfin de bien réussir ce cours, il est recommandé aux étudiant d'avoir suivi au moins un cours de statistique.\n"
+  },
+  {
+    "sigle": "STT1028",
+    "name": "Séries chronologiques",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nEtudier les bases théoriques des séries chronologiques. Développer l'aptitude à utiliser ces connaissances dans des cas concrets et la capacité de choisir le modèle qui convient à une situation donnée.Intérêts et applications des séries chronologiques. Revue des principales méthodes : lissage et décomposition, régression simple et multiple, modèles autorégressifs à moyennes mobiles. Comparaison de ces méthodes. Aspects pratiques de la prédiction. Applications à des cas concrets et usage de programmes d'ordinateur.\n",
+    "prealables": [
+      [
+        "STT1030"
+      ]
+    ]
+  },
+  {
+    "sigle": "STT1030",
+    "name": "Modèles de régression et de prévision",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nPermettre à l'étudiant d'effectuer la conception et l'analyse de modèles statistiques linéaires à l'aide des techniques de la régression. Familiariser l'étudiant à l'emploi de certains programmes statistiques de la banque SPSS, BMD ou SAS. La régression sera considérée comme outil de prévision. A cela, s'ajoutera l'étude des méthodes prévisionnelles.\nEstimation. Régression linéaire simple. Propriétés et distributions des estimateurs b0 et b1. Prévision. Extrapolation. Test de linéarité. Normalité des résidus. Variance constante.  Corrélation linéaire, transformation de Fisher. Modèles linéaires après transformation. Régression multiple : introduction, domaines d'application, modèles linéaires à plusieurs variables explicatives. Matrice des variances-covariances, corrélation, distribution des coefficients de régression, estimation ponctuelle et par intervalle.  Colinéarité et différents tests d'hypothèses. Choix du meilleur ensemble de variables explicatives. Utilisation des programmes BMD, SPSS ou SAS. Utilisation de l'information qualitative : variables auxiliaires. Modèles de régression polynomiale. Influence interactive dans un modèle de régression. Modèles de régression plus élaborés. Expériences factorielles. Modèles prévisionnels : composantes d'une série chronologique, techniques prévisionnelles, modèle autorégressif, lissage exponentiel, modèles avec tendance et influence.\n\n",
+    "prealables": [
+      [
+        "STT1042"
+      ]
+    ]
+  },
+  {
+    "sigle": "STT1032",
+    "name": "Théorie et pratique des sondages",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nFamiliariser et initier l'étudiant aux principales méthodes de sondage, le sensibiliser aux problèmes relatifs à l'organisation d'un sondage, à la construction de questionnaires et à la non-réponse.Rappel de notions probabilistes. Echantillon aléatoire simple sans remise. Echantillon stratifié. Estimateur-quotient. Sondage en grappes. Sondage à deux degrés. Problèmes relatifs à l'organisation d'un sondage. Contacter les gens, problèmes reliés aux enquêteurs. Problème de non-réponse et représentativité. Traitement informatique.\n",
+    "prealables": [
+      [
+        "PAF1010",
+        "STT1001",
+        "STT1042"
+      ]
+    ]
+  },
+  {
+    "sigle": "STT1036",
+    "name": "Méthodes statistiques en psychologie",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nSe familiariser avec les méthodes de la statistique descriptive et de la statistique inférentielle avec application aux données psychologiques en utilisant un logiciel de traitement de données sur plateforme PC.\nDonnées nominales : analyse descriptive. Test de comparaison d'une proportion à un standard, intervalle de confiance sur une proportion, test d'ajustement, test d'homogénéité, test d'indépendance, test de comparaison de deux proportions à l'intérieur du même échantillon, test de McNemar.\nDonnées ordinales : analyse descriptive. Test de comparaison de la médiane à un standard, test de comparaison de plusieurs médianes. Données à intervalles égaux et données de proportions : analyse descriptive. Test de comparaison de la moyenne à un standard, test de comparaison de deux moyennes, analyse de variance, test avec échantillons appariés.\nRégression linéaire simple et multiple.\n\n"
+  },
+  {
+    "sigle": "STT1038",
+    "name": "Statistiques appliquées en loisir, culture et tourisme",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nComprendre et appliquer les concepts de la statistique descriptive au loisir à la culture et tourisme.\nEchelles de mesure et variables. Hasard, probabilité et variables aléatoires. Mesures des tendances centrales et dispersion. Echantillonnage, estimation, limites de confiance. Variance. Mesures de dépendance, chi-carré, corrélation et régression. Mesure des différences, analyse de variance. Répétition des mesures. Travail au micro-ordinateur et utilisation de banque de données de la banque de MEDEL.\n\n"
+  },
+  {
+    "sigle": "STT1042",
+    "name": "Statistique",
+    "cycle": 1,
+    "annee": "Première année",
+    "description": "\nFamiliariser l'étudiant avec les fondements et les concepts de l'inférence statistique générale. Initier l'étudiant aux progiciels statistiques.Statistiques descriptives : représentations graphiques, mesures de tendance centrale et de dispersion. Distribution des fonctions et transformations de variables aléatoires. Distributions échantillonnales : loi normale, loi de Student, loi khi-deux, Loi de Fisher. Méthodes d'estimation classique. Principales qualités des estimateurs. Estimation ponctuelle et par intervalles de confiance. Tests d'hypothèses : tests d'adéquation, tests d'hypothèses pour une moyenne, une proportion, une variance, deux moyennes, deux proportions et deux variances. Erreurs de première et de deuxième espèce; puissance d'un test.\n",
+    "prealables": [
+      [
+        "STT1003"
+      ]
+    ]
+  },
+  {
+    "sigle": "STT1047",
+    "name": "Statistique mathématique",
+    "cycle": 1,
+    "annee": "Deuxième année",
+    "description": "\nCe cours vise à initier l'étudiant aux différentes techniques de mathématique statistique.Théorèmes limites. Distributions d'échantillonnage. Estimation paramétrique. Notions de statistique suffisante et de l'efficacité. Lemme de Neyman-Pearson, tests basés sur la fonction de vraisemblance. Méthodes paramétriques et non-paramétriques pour la comparaison de deux échantillons. Notions de base pour le plan d'expérience, l'analyse de tableaux de contingence, la théorie de la décision et l'inférence bayesienne.\n",
+    "prealables": [
+      [
+        "STT1042"
+      ]
+    ]
+  },
+  {
+    "sigle": "STT1048",
+    "name": "Statistiques en sciences biomédicales",
+    "cycle": 1,
+    "annee": "Troisième année",
+    "description": "\nFamiliariser l'étudiant avec la terminologie et les notions de base en statistique. Acquérir des connaissances statistiques spécifiques qui sont nécessaires à l'interprétation d'un grand nombre de méthodes quantitatives applicables en biologie.\nGraphiques et statistiques descriptives pour résumer l'information contenue dans un jeu de données. Probabilités : règles multiplicative et additive, probabilités conditionnelles, indépendance d'événements. Modèles binomial et Poisson, propriétés de la distribution normale, variable centrée réduite et calcul de probabilités par l'usage de la table de Z. Logique de l'inférence statistique, bases de l'échantillonnage, estimation ponctuelle et par intervalle de confiance, structure d'un test d'hypothèses, degré de signification, erreurs de type I et II, tests d'hypothèses sur une ou deux moyenne(s), sur une ou deux proportion(s). Analyse de la variance à un facteur. Modélisation de la dépendance entre deux variables aléatoires : régression linéaire simple et corrélation. Notions de statistique non paramétrique : rho de Spearman, tests du signe et des rangs signés, test de Kruskal-Wallis pour l'analyse de la variance non paramétrique. Exemples d'applications en biologie médicale.\n\n"
+  },
+  {
+    "sigle": "STT1049",
+    "name": "Statistiques en sciences de la santé",
+    "cycle": 1,
+    "annee": "Niveau variable",
+    "description": "\nFamiliariser l'étudiant(e) avec la terminologie et les notions de base en statistique. Acquérir des connaissances statistiques spécifiques qui sont nécessaires à l'interprétation d'un grand nombre de méthodes quantitatives applicables en sciences de la santé.\n\n"
+  }
+]
