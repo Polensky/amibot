@@ -177,29 +177,48 @@ async def corona(ctx):
     """ C O R O N A """
     await ctx.send(embed=coro.my_embed())
 
-@bot.command(name='ccr')
-async def ccr(ctx):
-    if ctx.message.author.guild_permissions.administrator:
-        courses = json.load(open('out.json'))
-        category = discord.utils.get(ctx.guild.categories, name='Discussion par cours')
-        for cour in courses:
-            channel_name = f'{cour["sigle"]} {cour["name"]}'
-            channel_topic = f'Niveau: {cour["annee"]}'
-            if 'prealables' in cour:
-                channel_topic += f' Préalables: {cour["prealables"]}'
-            if category:
-                channel = await ctx.guild.create_text_channel(channel_name, topic=channel_topic, category=category)
-                embed = discord.Embed(title=cour['name'], description=cour['description'])
-                msg = await channel.send(embed=embed)
-                await msg.pin()
-
-@bot.command(name='ccrd')
-async def ccrd(ctx):
-    if ctx.message.author.guild_permissions.administrator:
-        category = discord.utils.get(ctx.guild.categories, name='Discussion par cours')
-        for chan in ctx.guild.text_channels:
-            if chan.category == category:
-                await chan.delete()
+# @bot.command(name='ccr')
+# async def ccr(ctx):
+#     if ctx.message.author.guild_permissions.administrator:
+#         info_sigle = ['INF', 'SMI', 'PIF', 'SDD', 'SIF']
+#         math_sigle = ['ALG', 'MAP', 'MPU', 'STT', 'PMA', 'ROP', 'EMA', 'GEM']
+#         courses = json.load(open('out.json'))
+#         category_info = discord.utils.get(ctx.guild.categories, name="Cours d'informatique")
+#         category_math = discord.utils.get(ctx.guild.categories, name="Cours de mathématiques")
+#         for cour in courses:
+#             channel_name = f'{cour["sigle"]} {cour["name"]}'
+#             channel_topic = f'Niveau: {cour["annee"]}'
+#             if 'prealables' in cour:
+#                 channel_topic += f' Préalables: {" ".join(cour["prealables"][0])}'
+#             if cour['sigle'][:3] in info_sigle:
+#                 if category_info:
+#                     channel = await ctx.guild.create_text_channel(
+#                         channel_name,
+#                         topic=channel_topic,
+#                         category=category_info
+#                     )
+#                     embed = discord.Embed(title=cour['name'], description=cour['description'])
+#                     msg = await channel.send(embed=embed)
+#                     await msg.pin()
+#             if cour['sigle'][:3] in math_sigle:
+#                 if category_info:
+#                     channel = await ctx.guild.create_text_channel(
+#                         channel_name,
+#                         topic=channel_topic,
+#                         category=category_math
+#                     )
+#                     embed = discord.Embed(title=cour['name'], description=cour['description'])
+#                     msg = await channel.send(embed=embed)
+#                     await msg.pin()
+# 
+# @bot.command(name='ccrd')
+# async def ccrd(ctx):
+#     if ctx.message.author.guild_permissions.administrator:
+#         category_info = discord.utils.get(ctx.guild.categories, name="Cours d'informatique")
+#         category_math = discord.utils.get(ctx.guild.categories, name="Cours de mathématiques")
+#         for chan in ctx.guild.text_channels:
+#             if chan.category in (category_info, category_math):
+#                 await chan.delete()
 
 
 try:
